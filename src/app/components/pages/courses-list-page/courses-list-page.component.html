@@ -1,0 +1,195 @@
+<app-header-style-two></app-header-style-two>
+
+<!-- <div class="page-title-area item-bg1 jarallax" data-jarallax='{"speed": 0.3}'>
+    <div class="container">
+        <div class="page-title-content">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>Courses</li>
+            </ul>
+            <h2>Courses List</h2>
+        </div>
+    </div>
+</div> -->
+
+<section class="courses-area ptb-100">
+    <div class="container">
+        <div class="courses-topbar">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-4">
+                    <!-- <div class="topbar-result-count">
+                        <p>Showing 1 – 6 of 54</p>
+                    </div> -->
+                </div>
+
+                <div class="col-lg-8 col-md-8">
+                    <div class="topbar-ordering-and-search">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3 col-md-5 offset-lg-4 offset-md-1">
+                                <!-- <div class="topbar-ordering">
+                                    <select>
+                                        <option>Sort by popularity</option>
+                                        <option>Sort by latest</option>
+                                        <option>Default sorting</option>
+                                        <option>Sort by rating</option>
+                                        <option>Sort by new</option>
+                                    </select>
+                                </div> -->
+                            </div>
+
+                            <div class="col-lg-5 col-md-6">
+                                <!-- <div class="topbar-search">
+                                    <form>
+                                        <label><i class="bx bx-search"></i></label>
+                                        <input type="text" class="input-search" placeholder="Buscar...">
+                                    </form>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="row flow">
+                    <div class="col-lg-12 col-md-12" *ngFor="let course of courses$ | async">
+                        <div class="single-courses-list-box mb-30">
+                            <div class="box-item">
+                                <div class="courses-image">
+                                    <div class="image bg-1" [ngStyle]="{'background-image': 'url('+course.image+')'}">
+                                        <img src="" alt="image">
+                                        <a [routerLink]="['/curso', course.slug]" class="link-btn"></a>
+                                        <div class="courses-tag" *ngFor="let category of course.categories" 
+                                        [ngStyle]="{'background-color': category.color, 'color': '#fff'}">
+                                            <a routerLink="/courses-list" class="d-block">{{ category.name }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="courses-desc">
+                                    <div class="courses-content">
+                                        <div class="course-author d-flex align-items-center">
+                                            <img [src]="course.user_instructor.account.image" class="rounded-circle mr-2" alt="image">
+                                            <span>
+                                                <p class="title">Docente</p>
+                                                <span>{{ course.user_instructor.name }}</span>
+                                            </span>
+                                        </div>
+                                        <h3><a [routerLink]="['/curso', course.slug]" class="d-inline-block">{{ course.title }}</a></h3>
+                                        <!-- <div class="courses-rating">
+                                            <div class="review-stars-rated">
+                                                <i class='bx bxs-star'></i>
+                                                <i class='bx bxs-star'></i>
+                                                <i class='bx bxs-star'></i>
+                                                <i class='bx bxs-star'></i>
+                                                <i class='bx bxs-star'></i>
+                                            </div>
+                                            <div class="rating-total">
+                                                5.0 (1 rating)
+                                            </div>
+                                        </div> -->
+                                        <p>{{ course.description | slice : 0:70 }}...</p>
+                                    </div>
+        
+                                    <div class="courses-box-footer">
+                                        <ul>
+                                            <li class="details">
+                                                <span><i class='bx bx-user'></i>cupos</span>
+                                                <span> {{ course.cupos }} </span>
+                                            </li>
+                                            <li class="details disponibles">
+                                                <span><i class='bx bx-user'></i>disponibles</span>
+                                                <span> 2 </span>
+                                            </li>
+                                            <li class="details">
+                                                <span><i class='bx bx-book-open'></i>duración</span>
+                                                <span>{{ course.length }} {{ course.length_unit.name }}</span>
+                                            </li>
+                                            <li class="details">
+                                                <span><i class='bx bx-book-open'></i> clases</span>
+                                                <span>{{ totalLessons(course) }}</span>
+                                            </li>
+                                            
+                                            <li class="courses-price">{{ course.currency.symbol }} {{ course.price | number }} </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12">
+                <aside class="widget-area">
+                    <section class="widget widget_categories">
+                        <h3 class="widget-title">Categorias</h3>
+
+                        <ul>
+                            <li *ngFor="let category of categories$ | async">
+                                <a [routerLink]="['/cursos', category.slug]" routerLinkActive="activate-router">{{ category.name }} <span class="post-count">({{ category.courses.length }})</span></a>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section class="widget widget_ednuv_posts_thumb">
+                        <h3 class="widget-title">Cursos Destacados</h3>
+
+                        <article class="item" *ngFor="let cDestac of coursesDestac$ | async | slice : 0:3">
+                            <a routerLink="/single-courses" class="thumb">
+                                <span [ngStyle]="{'background-image': 'url(' + cDestac.image + ')'}" class="fullimage cover " role="img"></span>
+                            </a>
+                            <div class="info">
+                                <span>Inicia {{ cDestac.date_ini | date: 'dd-MM-yyyy' }}</span>
+                                <h4 class="title usmall"><a routerLink="/single-courses">{{ cDestac.title | slice : 0:35 }}...</a></h4>
+                            </div>
+
+                            <div class="clear"></div>
+                        </article>
+
+                    </section>
+                    <!-- <section class="widget widget_tag_cloud">
+                        <h3 class="widget-title">Ednuv Tags</h3>
+
+                        <div class="tagcloud">
+                            <a routerLink="/blog-style-2">IT <span class="tag-link-count"> (3)</span></a>
+                            <a routerLink="/blog-style-2">Ednuv <span class="tag-link-count"> (3)</span></a>
+                            <a routerLink="/blog-style-2">Games <span class="tag-link-count"> (2)</span></a>
+                            <a routerLink="/blog-style-2">Fashion <span class="tag-link-count"> (2)</span></a>
+                            <a routerLink="/blog-style-2">Travel <span class="tag-link-count"> (1)</span></a>
+                            <a routerLink="/blog-style-2">Smart <span class="tag-link-count"> (1)</span></a>
+                            <a routerLink="/blog-style-2">Marketing <span class="tag-link-count"> (1)</span></a>
+                            <a routerLink="/blog-style-2">Tips <span class="tag-link-count"> (2)</span></a>
+                        </div>
+                    </section> -->
+
+                    <!-- <section class="widget widget_instagram">
+                        <h3 class="widget-title">Instagram</h3>
+
+                        <ul>
+                            <li><a href="#" target="_blank" class="d-block"><img src="assets/img/blog/blog1.jpg" alt="image"></a></li>
+                            <li><a href="#" target="_blank" class="d-block"><img src="assets/img/blog/blog2.jpg" alt="image"></a></li>
+                            <li><a href="#" target="_blank" class="d-block"><img src="assets/img/blog/blog3.jpg" alt="image"></a></li>
+                            <li><a href="#" target="_blank" class="d-block"><img src="assets/img/blog/blog4.jpg" alt="image"></a></li>
+                            <li><a href="#" target="_blank" class="d-block"><img src="assets/img/blog/blog5.jpg" alt="image"></a></li>
+                            <li><a href="#" target="_blank" class="d-block"><img src="assets/img/blog/blog6.jpg" alt="image"></a></li>
+                        </ul>
+                    </section> -->
+
+                    <section class="widget widget_contact">
+                        <div class="text">
+                            <div class="icon">
+                                <i class='bx bx-phone-call'></i>
+                            </div>
+                            <span>Consultas</span>
+                            <a href="tel:+59826818368">(+598) 2681 8368</a>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,291 @@
+.navbar-nav {
+    margin: {
+        left: auto;
+        right: auto;
+    };
+    z-index: 1000!important;
+
+    .nav-item {
+        position: relative;
+        padding: 0;
+
+        a {
+            color: var(--blackColor);
+            font: {
+                size: 16.5px;
+                weight: 500;
+            };
+            padding: {
+                left: 0;
+                right: 0;
+                top: 30px;
+                bottom: 30px;
+            };
+            margin: {
+                left: 13px;
+                right: 13px;
+            };
+            &:hover, &:focus, &.active {
+                color: var(--mainColor);
+            }
+            i {
+                font-size: 17px;
+                position: relative;
+                top: 2px;
+                display: inline-block;
+                margin: {
+                    left: -3px;
+                    right: -3px;
+                };
+            }
+        }
+        &:last-child {
+            a {
+                margin-right: 0;
+            }
+        }
+        &:first-child {
+            a {
+                margin-left: 0;
+            }
+        }
+        &:hover, &.active {
+            a {
+                color: var(--mainColor);
+            }
+        }
+        .dropdown-menu {
+            box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+            background: var(--whiteColor);
+            position: absolute;
+            border: none;
+            top: 82px;
+            left: 0;
+            width: 250px;
+            z-index: 99;
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            border-radius: 0;
+            transition: all 0.2s ease-in-out;
+            border-top: 2px solid var(--mainColor);
+            padding: 0;
+            transform: scaleX(0);
+
+            li {
+                padding: 0;
+
+                a {
+                    padding: 13px 20px 11px;
+                    margin: 0;
+                    position: relative;
+                    display: block;
+                    color: #4a6f8a;
+                    border-bottom: 1px dashed #e5e5e5;
+                    font: {
+                        size: var(--fontSize);
+                        weight: 500;
+                    };
+                    i {
+                        margin: 0;
+                        position: absolute;
+                        top: 50%;
+                        font-size: 20px;
+                        transform: translateY(-50%);
+                        right: 10px;
+                    }
+                    &:hover, &:focus, &.active {
+                        color: var(--mainColor);
+                    }
+                }
+                &:last-child {
+                    a {
+                        border-bottom: none;
+                    }
+                }
+                .dropdown-menu {
+                    left: -250px;
+                    top: 0;
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: scaleY(0);
+                    
+                    li {
+                        a {
+                            color: #4a6f8a;
+                            
+                            &:hover, &:focus, &.active {
+                                color: var(--mainColor);
+                            }
+                        }
+                        .dropdown-menu {
+                            left: 250px;
+                            top: 0;
+                            opacity: 0;
+                            visibility: hidden;
+                            transform: scaleY(0);
+
+                            li {
+                                a {
+                                    color: #4a6f8a;
+
+                                    &:hover, &:focus, &.active {
+                                        color: var(--mainColor);
+                                    }
+                                }
+                                .dropdown-menu {
+                                    left: -250px;
+                                    top: 0;
+                                    opacity: 0;
+                                    visibility: hidden;
+                                    transform: scaleY(0);
+        
+                                    li {
+                                        a {
+                                            color: #4a6f8a;
+        
+                                            &:hover, &:focus, &.active {
+                                                color: var(--mainColor);
+                                            }
+                                        }
+                                        .dropdown-menu {
+                                            left: 250px;
+                                            top: 0;
+                                            opacity: 0;
+                                            visibility: hidden;
+                                            transform: scaleY(0);
+                
+                                            li {
+                                                a {
+                                                    color: #4a6f8a;
+        
+                                                    &:hover, &:focus, &.active {
+                                                        color: var(--mainColor);
+                                                    }
+                                                }
+                                                .dropdown-menu {
+                                                    left: -250px;
+                                                    top: 0;
+                                                    opacity: 0;
+                                                    visibility: hidden;
+                                                    transform: scaleY(0);
+                        
+                                                    li {
+                                                        a {
+                                                            color: #4a6f8a;
+        
+                                                            &:hover, &:focus, &.active {
+                                                                color: var(--mainColor);
+                                                            }
+                                                        }
+                                                        .dropdown-menu {
+                                                            left: 250px;
+                                                            top: 0;
+                                                            opacity: 0;
+                                                            visibility: hidden;
+                                                            transform: scaleY(0);
+                                
+                                                            li {
+                                                                a {
+                                                                    color: #4a6f8a;
+        
+                                                                    &:hover, &:focus, &.active {
+                                                                        color: var(--mainColor);
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        &.active {
+                                                            a {
+                                                                color: var(--whiteColor);
+                                                                background-color: var(--mainColor);
+                                                            }
+                                                        }
+                                                        &:hover {
+                                                            .dropdown-menu {
+                                                                opacity: 1;
+                                                                visibility: visible;
+                                                                transform: scaleY(1);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                &.active {
+                                                    a {
+                                                        color: var(--mainColor);
+                                                    }
+                                                }
+                                                &:hover {
+                                                    .dropdown-menu {
+                                                        opacity: 1;
+                                                        visibility: visible;
+                                                        transform: scaleY(1);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        &.active {
+                                            a {
+                                                color: var(--mainColor);
+                                            }
+                                        }
+                                        &:hover {
+                                            .dropdown-menu {
+                                                opacity: 1;
+                                                visibility: visible;
+                                                transform: scaleY(1);
+                                            }
+                                        }
+                                    }
+                                }
+                                &.active {
+                                    a {
+                                        color: var(--mainColor);
+                                    }
+                                }
+                                &:hover {
+                                    .dropdown-menu {
+                                        opacity: 1;
+                                        visibility: visible;
+                                        transform: scaleY(1);
+                                    }
+                                }
+                            }
+                        }
+                        &.active {
+                            a {
+                                color: var(--mainColor);
+                            }
+                        }
+                        &:hover {
+                            .dropdown-menu {
+                                opacity: 1;
+                                visibility: visible;
+                                transform: scaleY(1);
+                            }
+                        }
+                    }
+                }
+                &.active {
+                    a {
+                        color: var(--mainColor);
+                    }
+                }
+                &:hover {
+                    .dropdown-menu {
+                        opacity: 1;
+                        visibility: visible;
+                        transform: scaleY(1);
+                    }
+                }
+            }
+        }
+        &:hover {
+            .dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: scaleX(1);
+            }
+        }
+    }
+}
