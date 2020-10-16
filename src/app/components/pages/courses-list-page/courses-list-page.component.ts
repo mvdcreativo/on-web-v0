@@ -1,7 +1,7 @@
 import { Component, OnInit, ɵɵcomponentHostSyntheticListener } from '@angular/core';
 import { CoursesService } from 'src/app/services/courses.service';
-import { Observable } from 'rxjs';
-import { ResponseCourse, ResponseCourses, CourseSection, Course, Category } from 'src/app/interfaces/course';
+import { Observable, Subscription } from 'rxjs';
+import { ResponseCourse, ResponseCourses, CourseSection, Course, Category, ResponsePaginate } from 'src/app/interfaces/course';
 import { map, filter } from 'rxjs/operators';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -19,18 +19,29 @@ export class CoursesListPageComponent implements OnInit {
   course$: Observable<Course>;
   category$: Observable<Category>;
   coursesDestac$: Observable<Course[]>;
+  subscription: Subscription;
+
+  totalResut: Observable<number>;
+  pageDefault = 1;
+  perPage: number = 1000;
+  orden: string = 'desc';
+  filter: string = '';
+  result: Observable<ResponsePaginate>;
 
   constructor(
     private coursesService: CoursesService,
     private categoriesService: CategoriesService,
-    private courseService: CoursesService,
+   
     private activateRoute: ActivatedRoute,
     private styleService: StylesService
-  ) { }
+  ) { 
+    this.result = this.coursesService.resultItems$
+
+  }
 
   ngOnInit(): void {
-
     this.getCursos()
+
     this.categories$ = this.categoriesService.getCategories()
   }
 
@@ -38,10 +49,22 @@ export class CoursesListPageComponent implements OnInit {
   //   const lessons = courseSections.map( l => )
   //   return lessons.reduce((a, b) => a + b, 0);
   // }
+  getProducts(currentPage?, perPage?, filter?, sort?) {
+    this.subscription = this.coursesService.getProducts(currentPage, perPage, filter, sort).subscribe(next => this.loadData());
+  }
+
+  loadData() {
+    this.courses$ = this.result.pipe(map(v => v.data.data))
+    this.totalResut = this.result.pipe(map(v => v.data.total))
+    this.coursesDestac$ = this.courses$.pipe(map( course => course.filter( c => c.status_id === 3)))
+
+  }
 
   getCursos(){
     this.activateRoute.paramMap.subscribe(
       (params:Params) => {
+        console.log(params.params);
+        
         if(params.params.categorySlug){
 
           const slug = params.params.categorySlug;
@@ -51,10 +74,19 @@ export class CoursesListPageComponent implements OnInit {
           this.courses$ = this.category$.pipe(map(cat => cat.courses));
           this.coursesDestac$ = this.courses$.pipe(map( course => course.filter( c => c.status_id === 3)))
 
-        }else{
+        }
+        if(params.params.destacados){                      
+          this.courses$ = this.coursesService.getCoursesDestac();
+          this.coursesDestac$ =  this.courses$
+        }
+        if(params.params.search){
+          const search = params.params.search;   
+          this.getProducts(this.pageDefault, this.perPage, search, this.orden)
 
-          this.courses$ = this.coursesService.getCourses()
-          this.coursesDestac$ = this.courses$.pipe(map( course => course.filter( c => c.status_id === 3)))
+        }
+        if(Object.keys(params.params).length === 0 ){
+          
+          this.getProducts(this.pageDefault, this.perPage, this.filter, this.orden)
 
         }
         
@@ -63,12 +95,14 @@ export class CoursesListPageComponent implements OnInit {
     );
   }
 
-  totalLessons(section: Course){
-     const lessons = section.course_sections.map(l => l.lessons.length)
-    return lessons.reduce((contador, v) => contador + v)
+  totalLessons(course: Course){
+     const lessons = course.course_sections.map(l => l.lessons.length ? l.lessons.length : 0)
+    return lessons.length >= 1 ? lessons?.reduce((contador, v) => contador + v) : 0
   }
 
   getCoursesDestac(){
-    this.coursesDestac$ = this.courseService.getCoursesDestac();
+    this.coursesDestac$ = this.coursesService.getCoursesDestac();
   }
+
+
 }

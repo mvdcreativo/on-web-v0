@@ -1,6 +1,7 @@
 
 .courses-area{
     margin-top: 100px;
+    min-height: 100vh;
 }
 .activate-router{
     color: var(--mainColor)!important;
@@ -97,6 +98,7 @@
                     img {
                         width: 37px;
                         height: 37px;
+                        object-fit: cover;
                     }
                     .title{
                         font-size: 10px;

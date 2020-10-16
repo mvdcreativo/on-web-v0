@@ -51,15 +51,15 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-8 col-md-12">
-                <div class="row flow">
-                    <div class="col-lg-12 col-md-12" *ngFor="let course of courses$ | async">
+        <div class="row" >
+            <div class="col-lg-8 col-md-12" >
+                <div class="row flow" *ngIf="courses$ | async as courses; else loading">
+                    <div class="col-lg-12 col-md-12" *ngFor="let course of courses">
                         <div class="single-courses-list-box mb-30">
                             <div class="box-item">
                                 <div class="courses-image">
                                     <div class="image bg-1" [ngStyle]="{'background-image': 'url('+course.image+')'}">
-                                        <img src="" alt="image">
+                                        <img [src]="course.image" alt="image">
                                         <a [routerLink]="['/curso', course.slug]" class="link-btn"></a>
                                         <div class="courses-tag" *ngFor="let category of course.categories" 
                                         [ngStyle]="{'background-color': category.color, 'color': '#fff'}">
@@ -99,12 +99,12 @@
                                                 <span><i class='bx bx-user'></i>cupos</span>
                                                 <span> {{ course.cupos }} </span>
                                             </li>
-                                            <li class="details disponibles">
+                                            <!-- <li class="details disponibles">
                                                 <span><i class='bx bx-user'></i>disponibles</span>
                                                 <span> 2 </span>
-                                            </li>
+                                            </li> -->
                                             <li class="details">
-                                                <span><i class='bx bx-book-open'></i>duración</span>
+                                                <span><i class='bx bx-calendar-exclamation'></i>duración</span>
                                                 <span>{{ course.length }} {{ course.length_unit.name }}</span>
                                             </li>
                                             <li class="details">
@@ -125,17 +125,17 @@
 
             <div class="col-lg-4 col-md-12">
                 <aside class="widget-area">
-                    <section class="widget widget_categories">
+                    <section class="widget widget_categories" >
                         <h3 class="widget-title">Categorias</h3>
 
-                        <ul>
-                            <li *ngFor="let category of categories$ | async">
+                        <ul  *ngIf="categories$ | async as categories;else loading">
+                            <li *ngFor="let category of categories">
                                 <a [routerLink]="['/cursos', category.slug]" routerLinkActive="activate-router">{{ category.name }} <span class="post-count">({{ category.courses.length }})</span></a>
                             </li>
                         </ul>
                     </section>
 
-                    <section class="widget widget_ednuv_posts_thumb">
+                    <section class="widget widget_ednuv_posts_thumb" *ngIf="coursesDestac$;else loading">
                         <h3 class="widget-title">Cursos Destacados</h3>
 
                         <article class="item" *ngFor="let cDestac of coursesDestac$ | async | slice : 0:3">
@@ -191,5 +191,13 @@
                 </aside>
             </div>
         </div>
+
     </div>
 </section>
+
+<ng-template #loading>
+    <div class="div-content">
+        <div class="loading"><div></div><div></div><div></div></div>
+
+    </div>
+</ng-template>

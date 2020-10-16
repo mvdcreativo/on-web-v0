@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
 
-  API: "http://on_api_v1.test/api/"
+  API: "http://on_api_v1.test/api/",
+  AuthAPI: 'http://on_api_v1.test/api/auth/'
 };
 
 /*

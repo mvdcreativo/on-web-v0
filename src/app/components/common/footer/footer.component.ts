@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { Observable } from 'rxjs';
 import { Category } from 'src/app/interfaces/course';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-footer',
@@ -11,6 +12,7 @@ import { Category } from 'src/app/interfaces/course';
 export class FooterComponent implements OnInit {
   categories: Observable<Category[]>;
 
+  form :FormGroup
   constructor(
     private categoryService: CategoriesService
   ) { }
