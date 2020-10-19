@@ -63,8 +63,6 @@ import { EventsDetailsPageComponent } from './components/pages/events-details-pa
 import { PricingPageComponent } from './components/pages/pricing-page/pricing-page.component';
 import { FeedbackPageComponent } from './components/pages/feedback-page/feedback-page.component';
 import { PartnerPageComponent } from './components/pages/partner-page/partner-page.component';
-import { LoginPageComponent } from './components/pages/login-page/login-page.component';
-import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { FaqPageComponent } from './components/pages/faq-page/faq-page.component';
 import { ErrorPageComponent } from './components/pages/error-page/error-page.component';
 import { ComingSoonPageComponent } from './components/pages/coming-soon-page/coming-soon-page.component';
@@ -98,6 +96,11 @@ import { EditBillingAddressPageComponent } from './components/pages/edit-billing
 import { EditShippingAddressPageComponent } from './components/pages/edit-shipping-address-page/edit-shipping-address-page.component';
 import { SharedModule } from './shared/shared.module';
 import { StylesService } from './services/styles.service';
+import { indexAuthInterceptor } from './auth/helpers/index-auth.interceptor';
+import { ReplaySubject } from 'rxjs';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -162,8 +165,6 @@ import { StylesService } from './services/styles.service';
     PricingPageComponent,
     FeedbackPageComponent,
     PartnerPageComponent,
-    LoginPageComponent,
-    RegisterPageComponent,
     FaqPageComponent,
     ErrorPageComponent,
     ComingSoonPageComponent,
@@ -202,7 +203,10 @@ import { StylesService } from './services/styles.service';
     HttpClientModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    indexAuthInterceptor,
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

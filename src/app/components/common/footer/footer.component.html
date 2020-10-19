@@ -64,9 +64,9 @@
 
                     <div class="newsletter-box">
                         <p>Dejanos tu correo para que podamos enviarte novedades</p>
-                        <form class="newsletter-form" formGroup="form">
+                        <form class="newsletter-form" [formGroup]="formFooter">
                             <label>Tu dirección de correo electrónico:</label>
-                            <input type="email" class="input-newsletter" placeholder="Correo electrónico" name="EMAIL">
+                            <input formControlName="email" type="email" class="input-newsletter" placeholder="Correo electrónico" name="EMAIL">
                             <button type="submit">Suscribirme</button>
                         </form>
                     </div>

@@ -26,21 +26,21 @@
                             <h3>Bienvenidos</h3>
                             <p>Eres Nuevo? <a routerLink="/register">Registrate</a></p>
 
-                            <form formGroup="form">
+                            <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
                                 <div class="form-group">
-                                    <input type="email" placeholder="Your email address" class="form-control">
+                                    <input type="email" formControlName="email" placeholder="Correo electrónico" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" placeholder="Your password" class="form-control">
+                                    <input type="password" formControlName="password" placeholder="Contraseña" class="form-control">
                                 </div>
-                                <button type="submit">Entrar</button>
+                                <button type="submit" [disabled]="!formLogin.valid">Entrar</button>
                                 <div class="forgot-password">
                                     <a routerLink="/">Olvide la contraseña</a>
                                 </div>
-                                <div class="connect-with-social">
-                                    <button type="submit" class="facebook"><i class='bx bxl-facebook'></i> Entrar con Facebook</button>
-                                    <button type="submit" class="twitter"><i class='bx bxl-google'></i> Entrar con Google</button>
-                                </div>
+                                <!-- <div class="connect-with-social">
+                                    <button class="facebook"><i class='bx bxl-facebook'></i> Entrar con Facebook</button>
+                                    <button class="twitter"><i class='bx bxl-google'></i> Entrar con Google</button>
+                                </div> -->
                             </form>
                         </div>
                     </div>

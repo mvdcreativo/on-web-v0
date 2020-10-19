@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  form : FormGroup;
+  formSearch : FormGroup;
   
 
   constructor(
@@ -17,8 +17,8 @@ export class HeaderComponent implements OnInit {
     private router: Router
   ) {
     
-    this.form = this.fb.group({
-      search: [null]
+    this.formSearch = this.fb.group({
+      search: [null,Validators.required]
     })
    }
 
@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onSubmitSearch(){
-    const search = this.form.get('search').value
+    const search = this.formSearch.get('search').value
     this.router.navigate(['/buscar/cursos', search ])
   }
 }

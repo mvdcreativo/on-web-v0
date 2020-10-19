@@ -113,6 +113,7 @@ const routes: Routes = [
 
     { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule) },
     { path: 'nosotros', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule) },
+    { path: 'login', loadChildren: () => import('./components/pages/login-page/login-page.module').then(m => m.LoginPageModule) },
     
     {path: '**', component: ErrorPageComponent}
 ];

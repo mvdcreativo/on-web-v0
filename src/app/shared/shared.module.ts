@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { MenuHorizontalComponent } from './components/menu-horizontal/menu-horizontal.component';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FunfactsComponent } from './components/funfacts/funfacts.component';
 import { CategoriesStyleOneComponent } from './components/categories-style-one/categories-style-one.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -25,6 +25,7 @@ import { TmNgOdometerModule } from 'tm-ng-odometer';
     RouterModule,
     SwiperModule,
     ReactiveFormsModule,
+    FormsModule,
     TmNgOdometerModule
     
   ],
@@ -32,6 +33,7 @@ import { TmNgOdometerModule } from 'tm-ng-odometer';
     SwiperModule,
     MenuHorizontalComponent,
     ReactiveFormsModule,
+    FormsModule,
     FunfactsComponent,
     CategoriesStyleOneComponent,
     HeaderComponent,
