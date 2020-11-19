@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ednuv-ng": {
+    "on-capacitaciones": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -92,18 +92,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ednuv-ng:build"
+            "browserTarget": "on-capacitaciones:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ednuv-ng:build:production"
+              "browserTarget": "on-capacitaciones:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ednuv-ng:build"
+            "browserTarget": "on-capacitaciones:build"
           }
         },
         "test": {
@@ -140,18 +140,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ednuv-ng:serve"
+            "devServerTarget": "on-capacitaciones:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ednuv-ng:serve:production"
+              "devServerTarget": "on-capacitaciones:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "ednuv-ng",
+  "defaultProject": "on-capacitaciones",
   "cli": {
     "analytics": "88fcffe3-1c95-499d-a595-e8b4c541d5c7"
   }
