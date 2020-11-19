@@ -3,7 +3,7 @@
     <div class="top-header">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     <ul class="top-header-contact-info">
                         <li>
                             <i class='bx bx-phone-call'></i>
@@ -22,13 +22,17 @@
                         </li>
                     </ul>
                 </div>
+                <div class="col-lg-3">
 
-                <div class="col-lg-4">
+                    <user-actions-component></user-actions-component>
+                </div>
+
+                <!-- <div class="col-lg-4">
                     <div class="top-header-btn">
                         <a routerLink="/login" class="default-btn"><i class='bx bx-log-in icon-arrow before'></i><span
                                 class="label">Entrar</span><i class="bx bx-log-in icon-arrow after"></i></a>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -74,7 +78,10 @@
                         <app-menu-horizontal></app-menu-horizontal>
 
                         <div class="others-option">
-
+                            <!-- <a routerLink="/cart" class="cart-wrapper-btn d-inline-block">
+                                <i class='bx bx-cart-alt'></i>
+                                <span>01</span>
+                            </a> -->
 
                             <div class="search-box d-inline-block">
                                 <form [formGroup]="formSearch" >

@@ -1,0 +1,73 @@
+<div class="col-lg-12 col-md-12">
+    <div class="single-courses-list-box mb-30">
+        <div class="box-item">
+            <div class="courses-image">
+                <div class="image bg-1" [ngStyle]="{'background-image': 'url('+course.image+')'}">
+                    <img [src]="course.image" alt="image">
+                    <a [routerLink]="['/cursos/curso', course.slug]" class="link-btn"></a>
+                    <div class="courses-tag" *ngFor="let category of course.categories" 
+                    [ngStyle]="{'background-color': category.color, 'color': '#fff'}">
+                        <a routerLink="/courses-list" class="d-block">{{ category.name }}</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="courses-desc">
+                <div class="courses-content">
+                    <div class="course-author d-flex align-items-center">
+                        <img [src]="course.user_instructor.account.image" class="rounded-circle mr-2" alt="image">
+                        <span>
+                            <p class="title">Docente</p>
+                            <span>{{ course.user_instructor.name }}</span>
+                        </span>
+                    </div>
+                    <h3><a [routerLink]="['/cursos/curso', course.slug]" class="d-inline-block">{{ course.title }}</a></h3>
+                    <!-- <div class="courses-rating">
+                        <div class="review-stars-rated">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
+                        <div class="rating-total">
+                            5.0 (1 rating)
+                        </div>
+                    </div> -->
+                    <p>{{ course.description | slice : 0:70 }}...</p>
+                </div>
+
+                <div class="courses-box-footer">
+                    <ul>
+                        <li class="details">
+                            <span><i class='bx bx-user'></i>cupos</span>
+                            <span> {{ course.cupos }} </span>
+                        </li>
+                        <!-- <li class="details disponibles">
+                            <span><i class='bx bx-user'></i>disponibles</span>
+                            <span> 2 </span>
+                        </li> -->
+                        <li class="details">
+                            <span><i class='bx bx-calendar-exclamation'></i>duración</span>
+                            <span>{{ course.length }} {{ course.length_unit.name }}</span>
+                        </li>
+                        <li class="details">
+                            <span><i class='bx bx-book-open'></i> clases</span>
+                            <span>{{ totalLessons(course) }}</span>
+                        </li>
+                        
+                        <li class="add-to-card">
+                        </li>
+                        <li class="courses-price">
+                            <!-- <button class="add-card-btn" mat-flat-button >
+                                <mat-icon>add_shopping_cart</mat-icon>
+                                inscribirme
+                            </button> -->
+                            {{ course.currency.symbol }} {{ course.price | number }} 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

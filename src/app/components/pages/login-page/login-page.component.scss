@@ -89,6 +89,9 @@
                     background-color: var(--optionalColor);
                     color: var(--whiteColor);
                     border-color: var(--optionalColor);
+                };
+                &:disabled{
+                    background-color: rgb(202, 202, 202);
                 }
             }
             .forgot-password {

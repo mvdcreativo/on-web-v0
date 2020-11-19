@@ -43,13 +43,17 @@
         span {
             display: block;
             margin-bottom: 2px;
+            font: {
+                size: 12px;
+                weight: 300;
+            };
         }
         a {
             display: inline-block;
             color: var(--whiteColor);
             font: {
                 size: 13px;
-                weight: 600;
+                weight: 400;
             };
             &:hover, &:focus {
                 opacity: .95;
@@ -68,6 +72,10 @@
         color: var(--mainColor);
         border-color: var(--whiteColor);
         
+        span{
+            font-size: 14px!important;
+            font-weight: 400;
+        }
         .icon-arrow {
             color: var(--mainColor);
             transition: var(--transition);

@@ -27,6 +27,6 @@ export class HeaderComponent implements OnInit {
 
   onSubmitSearch(){
     const search = this.formSearch.get('search').value
-    this.router.navigate(['/buscar/cursos', search ])
+    this.router.navigate(['cursos/buscar/cursos', search ])
   }
 }

@@ -1,0 +1,63 @@
+<form [formGroup]="form">
+    <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+                <label>Nombre <span class="required">*</span></label>
+                <input type="text" formControlName="name" class="form-control">
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+                <label>Apellido <span class="required">*</span></label>
+                <input type="text" formControlName="last_name" class="form-control">
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+                <label>Tipo de Doc.</label>
+                <mat-select  formControlName="type_doc_iden"  class="form-control m-select">
+                    <mat-option value="CI">CI</mat-option>
+                    <mat-option value="Pasaporte">Pasaporte</mat-option>
+                </mat-select>
+            </div>
+
+
+
+        </div>
+
+
+
+        <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+                <label>Nº Doc. Identidad <span class="required">*</span></label>
+                <input type="text" formControlName="n_doc_iden" class="form-control">
+            </div>
+        </div>
+
+
+        <div class="col-lg-6 col-md-12">
+            <div class="form-group">
+                <label>Teléfono/Móvil<span class="required">*</span></label>
+                <input type="text" formControlName="phone_one" class="form-control">
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12">
+            <div class="form-group">
+                <label>Correo Electrónico<span class="required">*</span></label>
+                <input type="text" formControlName="email" class="form-control">
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12">
+            <div class="form-group">
+                <label>Dirección<span class="required">*</span></label>
+                <input type="text" formControlName="address_one" class="form-control">
+            </div>
+        </div>
+
+    </div>
+</form>

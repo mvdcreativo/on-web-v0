@@ -5,12 +5,14 @@ import { AboutRoutingModule } from './about-routing.module';
 import { AboutComponent } from './about.component';
 import { AboutSectionAComponent } from './about-section-a/about-section-a.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { OurStoryComponent } from './our-story/our-story.component';
 
 
 @NgModule({
   declarations: [
     AboutComponent,
-    AboutSectionAComponent
+    AboutSectionAComponent,
+    OurStoryComponent
   ],
   imports: [
     CommonModule,

@@ -11,7 +11,20 @@
     --paragraphColor: #727695;
     --fontSize: 15px;
     --transition: .5s;
-}
+    --disabled-color: rgb(241, 241, 241);
+
+    --color-primary: rgb(41, 98, 255);
+    --color-primary-light: rgba(41, 98, 255, 0.521);
+    --color-secondary: rgb(10, 231, 176);
+    --color-success: rgb(69, 187, 75);
+    --color-warn: rgb(211, 47, 47);
+    --color-dark: rgb(33, 33, 33);
+    --color-grey: rgb(221, 221, 221);
+  
+    --background-gral: #f7f7f7;
+  }
+
+
 .svg-logo{
     fill: var(--mainColor);
 }
@@ -143,7 +156,9 @@ img {
     };
     font: {
         size: 14px;
-        weight: 600;
+        weight: 400;
+        color: var(--whiteColor);
+
     };
     .label, .icon-arrow {
         backface-visibility: hidden;
@@ -192,6 +207,10 @@ img {
                 transform: translateX(0) scaleX(1);
             }
         }
+    }
+    &:disabled{
+        background-color: var(--disabled-color)!important;
+        border-color: var(--disabled-color);
     }
 }
 
@@ -1206,7 +1225,6 @@ textarea.form-control {
     position: absolute;
     left: 0;
     top: 0;
-
     .slideshow-slides {
         padding-left: 0;
         margin-bottom: 0;
@@ -1216,7 +1234,6 @@ textarea.form-control {
         position: absolute;
         left: 0;
         top: 0;
-
         li {
             span {
                 width: 100%;
@@ -1265,6 +1282,7 @@ textarea.form-control {
 .billing-details {
     .form-group {
         .nice-select {
+            background-color:#f3f3f3;
             float: unset;
             line-height: 48px;
             color: var(--paragraphColor);
@@ -3700,3 +3718,87 @@ blockquote, .blockquote {
 @media only screen and (min-width: 1200px) and (max-width: 1275px) {
 
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+////customize formFields
+.mat-form-field-outline-start, .mat-form-field-outline-gap, .mat-form-field-outline-end{
+    background-color: var(--background-gral)!important;
+    // border-color: white!important;
+    
+  }
+  
+  //float level
+  .mat-form-field-should-float .mat-form-field-label {
+    background-color: var(--background-gral);
+    width: auto!important;
+    border-radius: 50px;
+    padding: 4px 10px;
+    margin-left: -5px;
+    margin-top: -6px;
+  }
+  
+  
+  
+  // Theme styles that only apply to the outline appearance of the form-field.
+  
+    .mat-form-field-appearance-outline {
+      .mat-form-field-outline {
+        color: var(--background-gral)!important; //color de borde
+      }
+  
+      .mat-form-field-outline-thick {
+  
+        transition: 1s;
+        border-radius: 5px;
+  
+  
+  
+      }
+  
+      &.mat-focused {
+  
+        .mat-form-field-outline-thick {
+          color: var(--color-primary-light)!important;
+        }
+  
+        &.mat-accent .mat-form-field-outline-thick {
+          color: var(--color-secondary)!important;
+        }
+  
+        &.mat-warn .mat-form-field-outline-thick {
+          color: var(--color-warn)!important;
+        }
+      }
+  
+      // Class repeated so that rule is specific enough to override focused accent color case.
+      &.mat-form-field-invalid.mat-form-field-invalid {
+        .mat-form-field-outline-thick {
+          color: var(--color-warn)!important;
+        }
+      }
+  
+    }
+
+    
+
+  @media (max-width: 500px){
+    body [class^='mvd-col']{
+      grid-column: 1 / -1!important;
+    }
+  }
+  
+  @media (max-width: 800px){
+    body [class^='mvd-col']{
+      grid-column: 1 / -1!important;
+    }
+  }
+  
+  @media (max-width: 1024px){
+   body [class*='mvd-col'] {
+        grid-column: 1 / -1!important;
+    }
+   
+  }

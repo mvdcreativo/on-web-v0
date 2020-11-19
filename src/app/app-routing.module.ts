@@ -18,8 +18,7 @@ import { Routes, RouterModule } from '@angular/router';
 // import { PricingPageComponent } from './components/pages/pricing-page/pricing-page.component';
 // import { FeedbackPageComponent } from './components/pages/feedback-page/feedback-page.component';
 // import { PartnerPageComponent } from './components/pages/partner-page/partner-page.component';
-import { LoginPageComponent } from './components/pages/login-page/login-page.component';
-import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
+
 // import { FaqPageComponent } from './components/pages/faq-page/faq-page.component';
 import { ErrorPageComponent } from './components/pages/error-page/error-page.component';
 // import { ComingSoonPageComponent } from './components/pages/coming-soon-page/coming-soon-page.component';
@@ -31,20 +30,20 @@ import { ErrorPageComponent } from './components/pages/error-page/error-page.com
 // import { ShopFullWidthPageComponent } from './components/pages/shop-full-width-page/shop-full-width-page.component';
 // import { ProductsDetailsPageComponent } from './components/pages/products-details-page/products-details-page.component';
 // import { CartPageComponent } from './components/pages/cart-page/cart-page.component';
-// import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
+import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { ContactPageComponent } from './components/pages/contact-page/contact-page.component';
+import { AuthGuard } from './auth/guards/auth.guard';
 // import { CategoryPageOneComponent } from './components/pages/category-page-one/category-page-one.component';
 // import { CategoryPageTwoComponent } from './components/pages/category-page-two/category-page-two.component';
 // import { CategoryPageThreeComponent } from './components/pages/category-page-three/category-page-three.component';
-import { CoursesListPageComponent } from './components/pages/courses-list-page/courses-list-page.component';
+// import { CoursesListPageComponent } from './components/pages/courses-list-page/courses-list-page.component';
 // import { CoursesGridStyleOneColumnsThreePageComponent } from './components/pages/courses-grid-style-one-columns-three-page/courses-grid-style-one-columns-three-page.component';
 // import { CoursesGridStyleOneColumnsFourPageComponent } from './components/pages/courses-grid-style-one-columns-four-page/courses-grid-style-one-columns-four-page.component';
 // import { CoursesGridStyleTwoColumnsTwoPageComponent } from './components/pages/courses-grid-style-two-columns-two-page/courses-grid-style-two-columns-two-page.component';
 // import { CoursesGridStyleTwoColumnsThreePageComponent } from './components/pages/courses-grid-style-two-columns-three-page/courses-grid-style-two-columns-three-page.component';
 // import { CoursesGridStyleThreeColumnsThreePageComponent } from './components/pages/courses-grid-style-three-columns-three-page/courses-grid-style-three-columns-three-page.component';
 // import { CoursesGridStyleThreeColumnsTwoPageComponent } from './components/pages/courses-grid-style-three-columns-two-page/courses-grid-style-three-columns-two-page.component';
-import { CoursesDetailsPageComponent } from './components/pages/courses-details-page/courses-details-page.component';
-import { AboutPageOneComponent } from './components/pages/about-page-one/about-page-one.component';
+// import { CoursesDetailsPageComponent } from './components/pages/courses-details-page/courses-details-page.component';
 // import { MyDashboardPageComponent } from './components/pages/my-dashboard-page/my-dashboard-page.component';
 // import { OrdersPageComponent } from './components/pages/orders-page/orders-page.component';
 // import { DownloadsPageComponent } from './components/pages/downloads-page/downloads-page.component';
@@ -72,18 +71,15 @@ const routes: Routes = [
     // {path: 'pricing', component: PricingPageComponent},
     // {path: 'feedback', component: FeedbackPageComponent},
     // {path: 'partner', component: PartnerPageComponent},
-    {path: 'login', component: LoginPageComponent},
-    {path: 'register', component: RegisterPageComponent},
     // {path: 'faqs', component: FaqPageComponent},
-    {path: 'error-404', component: ErrorPageComponent},
     // {path: 'coming-soon', component: ComingSoonPageComponent},
     // {path: 'courses-category-style-1', component: CategoryPageOneComponent},
     // {path: 'courses-category-style-2', component: CategoryPageTwoComponent},
     // {path: 'courses-category-style-3', component: CategoryPageThreeComponent},
-    {path: 'cursos', component: CoursesListPageComponent},
-    {path: 'cursos/destacados/:destacados', component: CoursesListPageComponent},
-    {path: 'cursos/:categorySlug', component: CoursesListPageComponent},
-    {path: 'buscar/cursos/:search', component: CoursesListPageComponent},
+    // {path: 'cursos', component: CoursesListPageComponent},
+    // {path: 'cursos/destacados/:destacados', component: CoursesListPageComponent},
+    // {path: 'cursos/:categorySlug', component: CoursesListPageComponent},
+    // {path: 'buscar/cursos/:search', component: CoursesListPageComponent},
     // {path: 'cursos1', component: CoursesGridStyleOneColumnsThreePageComponent},
     // {path: 'courses-4-columns-style-1', component: CoursesGridStyleOneColumnsFourPageComponent},
     // {path: 'courses-2-columns-style-2', component: CoursesGridStyleTwoColumnsTwoPageComponent},
@@ -92,12 +88,10 @@ const routes: Routes = [
     // {path: 'courses-2-columns-style-3', component: CoursesGridStyleThreeColumnsTwoPageComponent},
     // {path: 'courses-3-columns-style-3', component: CoursesGridStyleThreeColumnsThreePageComponent},
     // {path: 'courses-4-columns-style-3', component: CoursesGridStyleThreeColumnsFourPageComponent},
-    {path: 'curso/:slug', component: CoursesDetailsPageComponent},
-    // {path: 'my-dashboard', component: MyDashboardPageComponent},
+    // {path: 'curso/:slug', component: CoursesDetailsPageComponent},
     // {path: 'orders', component: OrdersPageComponent},
     // {path: 'downloads', component: DownloadsPageComponent},
     // {path: 'edit-address', component: EditAddressPageComponent},
-    // {path: 'edit-account', component: EditAccountPageComponent},
     // {path: 'edit-billing-address', component: EditBillingAddressPageComponent},
     // {path: 'edit-shipping-address', component: EditShippingAddressPageComponent},
     // {path: 'blog-style-1', component: BlogGridPageComponent},
@@ -108,18 +102,35 @@ const routes: Routes = [
     // {path: 'shop-grid-fullwidth', component: ShopFullWidthPageComponent},
     // {path: 'single-products', component: ProductsDetailsPageComponent},
     // {path: 'cart', component: CartPageComponent},
-    // {path: 'checkout', component: CheckoutPageComponent},
+    {path: 'checkout', component: CheckoutPageComponent},
     {path: 'contact', component: ContactPageComponent},
 
     { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule) },
     { path: 'nosotros', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule) },
     { path: 'login', loadChildren: () => import('./components/pages/login-page/login-page.module').then(m => m.LoginPageModule) },
-    
-    {path: '**', component: ErrorPageComponent}
+    { path: 'registro', loadChildren: () => import('./components/pages/register-page/register-page.module').then(m => m.RegisterPageModule) },
+    { path: 'cursos', loadChildren: () => import('./components/pages/courses/courses.module').then(m => m.CoursesModule)},
+    { 
+      path: 'mi-cuenta', 
+      loadChildren: ()=> import('./components/pages/my-dashboard-page/my-dashboard-page.module').then(m => m.MyDashboardPageModule),
+      canActivate: [AuthGuard]
+    },
+    { 
+      path: 'orden-de-compra', 
+      loadChildren: ()=> import('./components/pages/checkout-page/checkout-page.module').then(m => m.CheckoutPageModule),
+      canActivate: [AuthGuard]
+    },
+    { 
+      path: 'carrito', 
+      loadChildren: ()=> import('./components/pages/cart-page/cart-page.module').then(m => m.CartPageModule),
+    },
+    { path: '**', component: ErrorPageComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    initialNavigation: 'enabled'
+})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

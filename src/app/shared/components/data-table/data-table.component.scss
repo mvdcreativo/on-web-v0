@@ -1,0 +1,24 @@
+
+
+.publish{
+    color: var(--color-success);
+}
+.mat-button{
+    min-width: 0px!important;
+    line-height: 16px!important;
+}
+.tips{
+    background-color: rgb(241, 241, 241)!important;
+    color: black!important;
+}
+
+table{
+    width: 100%;
+    .th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
+      padding: 0px 1rem !important;
+      font-size: 12px;
+    }
+    .th.mat-header-cell{
+      text-align: center!important;
+    }
+  }

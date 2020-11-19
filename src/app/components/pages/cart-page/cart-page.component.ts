@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CartItem } from './interfaces/cart-item';
+import { CartService } from './services/cart.service';
 
 @Component({
   selector: 'app-cart-page',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartPageComponent implements OnInit {
 
-  constructor() { }
+  
+  formValid: boolean;
+  products: Observable<CartItem[]>;
+
+
+  constructor(
+    private cartServices: CartService
+  ) { }
 
   ngOnInit(): void {
+    this.formValid = false;
   }
 
+
+
+
+  onSubmitOrder(){
+    // console.log(this.form);
+    
+  }
 }

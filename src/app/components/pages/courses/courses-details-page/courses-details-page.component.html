@@ -1,0 +1,350 @@
+<app-header></app-header>
+
+<section *ngIf="course$ | async as course" class="courses-details-area pt-100 pb-70">
+    <div class="container">
+        <div class="courses-details-header">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="courses-title">
+                        <h2>{{ course.title }}</h2>
+                        <p>{{ course.description | slice : 0:80  }}...</p>
+                    </div>
+
+                    <div class="courses-meta">
+                        <ul>
+                            <!-- <li>
+                                <i class='bx bx-folder-open'></i>
+                                <span>Categoria</span>
+                                <ul>
+                                    <li *ngFor="let item of course.categories">
+                                        <a routerLink="/single-courses">{{ item.name }}</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                            <!-- <li>
+                                <i class='bx bx-group'></i>
+                                <span>Students Enrolled</span>
+                                <a routerLink="/single-courses">813,454</a>
+                            </li> -->
+                            <li>
+                                <i class='bx bx-calendar'></i>
+                                <span>Inicio</span>
+                                <a routerLink="/single-courses">{{ course.date_ini | date : 'dd-MM-yyyy' }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="courses-price">
+                        <!-- <div class="courses-review">
+                            <div class="review-stars">
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                            </div>
+                            <span class="reviews-total d-inline-block">(2 reviews)</span>
+                        </div> -->
+                        <div class="price">
+                            {{ course.currency.symbol }} {{ course.price | number }}
+                        </div>
+                        <a (click)="pay(course)" class="default-btn">
+                            <i class='bx bx-paper-plane icon-arrow before'></i>
+                            <span class="label">Inscribirme al Curso</span>
+                            <i class="bx bx-paper-plane icon-arrow after"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="courses-details-image text-center">
+                    <img [src]="course.image" alt="image">
+                </div>
+
+                <div class="courses-details-desc">
+                    <h3>Conocimientos que adquieres</h3>
+                    <div class="why-you-learn">
+                        <ul>
+                            <li *ngFor="let item of course.adquired_skills">
+                                <span>
+                                    <i class='bx bx-check'></i>
+                                    {{ item.title }}
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <h3>Requisitos</h3>
+                    <p>{{ course.requirements }}</p>
+                    <!-- <ul class="requirements-list">
+                        <li>Contrary to popular belief, Lorem Ipsum is not simply random text.</li>
+                        <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</li>
+                        <li>The standard Lorem Ipsum passage, used since the 1500s.</li>
+                    </ul> -->
+                    <h3>Descripción</h3>
+                    {{ course.description }}
+                    <!-- <h3>Who this course is for:</h3>
+                    <ul class="audience-list">
+                        <li>Beginners to programming and data science</li>
+                        <li>Students eager to learn about job opportunities in the field of data science</li>
+                        <li>Candidates willing to boost their resume by learning how to combine the knowledge of Statistics, SQL, and Tableau in a real-world working environment</li>
+                        <li>SQL Programmers who want to develop business reasoning and apply their knowledge to the solution of various business tasks</li>
+                        <li>People interested in a Business Intelligence Analyst career</li>
+                    </ul> -->
+                    <h3>Conoce a tu docente</h3>
+                    <div class="courses-author">
+                        <div class="author-profile-header"></div>
+                        <div class="author-profile">
+                            <div class="author-profile-title">
+                                <img [src]="course.user_instructor.account.image" class="shadow-sm rounded-circle" alt="image">
+                                <div class="author-profile-title-details d-flex justify-content-between">
+                                    <div class="author-profile-details">
+                                        <h4>{{ course.user_instructor.name }}</h4>
+                                        <span class="d-block">{{ course.user_instructor.account.certificated }}</span>
+                                    </div>
+
+                                    <div class="author-profile-raque-profile">
+                                        <a routerLink="/" class="d-inline-block">Ver perfil</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ course.user_instructor.account.bio }}
+                        </div>
+                    </div>
+
+                    <!-- <div class="courses-review-comments">
+                        <h3>3 Reviews</h3>
+                        <div class="user-review">
+                            <img src="assets/img/user1.jpg" alt="image">
+                            <div class="review-rating">
+                                <div class="review-stars">
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                </div>
+                                <span class="d-inline-block">James Anderson</span>
+                            </div>
+                            <span class="d-block sub-comment">Excellent</span>
+                            <p>Very well built theme, couldn't be happier with it. Can't wait for future updates to see what else they add in.</p>
+                        </div>
+
+                        <div class="user-review">
+                            <img src="assets/img/user2.jpg" alt="image">
+                            <div class="review-rating">
+                                <div class="review-stars">
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                </div>
+                                <span class="d-inline-block">Sarah Taylor</span>
+                            </div>
+                            <span class="d-block sub-comment">Video Quality!</span>
+                            <p>Was really easy to implement and they quickly answer my additional questions!</p>
+                        </div>
+
+                        <div class="user-review">
+                            <img src="assets/img/user3.jpg" alt="image">
+                            <div class="review-rating">
+                                <div class="review-stars">
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                </div>
+                                <span class="d-inline-block">David Warner</span>
+                            </div>
+                            <span class="d-block sub-comment">Perfect Coding!</span>
+                            <p>Stunning design, very dedicated crew who welcome new ideas suggested by customers, nice support.</p>
+                        </div>
+                    </div> -->
+                </div>
+
+                <!-- <div class="related-courses">
+                    <h3>Cursos Relacionados</h3>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="single-courses-box mb-30">
+                                <div class="courses-image">
+                                    <a routerLink="/single-courses" class="d-block"><img src="assets/img/courses/courses1.jpg" alt="image"></a>
+                                    <div class="courses-tag">
+                                        <a routerLink="/courses-2-columns-style-1" class="d-block">Business</a>
+                                    </div>
+                                </div>
+    
+                                <div class="courses-content">
+                                    <div class="course-author d-flex align-items-center">
+                                        <img src="assets/img/user1.jpg" class="rounded-circle mr-2" alt="image">
+                                        <span>Steven Smith</span>
+                                    </div>
+                                    <h3><a routerLink="/single-courses" class="d-inline-block">Raque Professional IT Expert Certificate Course</a></h3>
+                                    <div class="courses-rating">
+                                        <div class="review-stars-rated">
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                        </div>
+                                        <div class="rating-total">
+                                            5.0 (1 rating)
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="courses-box-footer">
+                                    <ul>
+                                        <li class="students-number">
+                                            <i class='bx bx-user'></i> 10 students
+                                        </li>
+                                        <li class="courses-lesson">
+                                            <i class='bx bx-book-open'></i> 6 lessons
+                                        </li>
+                                        <li class="courses-price">
+                                            Free
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-6 col-md-6">
+                            <div class="single-courses-box mb-30">
+                                <div class="courses-image">
+                                    <a routerLink="/single-courses" class="d-block"><img src="assets/img/courses/courses2.jpg" alt="image"></a>
+                                    <div class="courses-tag">
+                                        <a routerLink="/courses-2-columns-style-1" class="d-block">Design</a>
+                                    </div>
+                                </div>
+    
+                                <div class="courses-content">
+                                    <div class="course-author d-flex align-items-center">
+                                        <img src="assets/img/user2.jpg" class="rounded-circle mr-2" alt="image">
+                                        <span>Sarah Taylor</span>
+                                    </div>
+                                    <h3><a routerLink="/single-courses" class="d-inline-block">Certified Graphic Design with Free Project Course</a></h3>
+                                    <div class="courses-rating">
+                                        <div class="review-stars-rated">
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star'></i>
+                                            <i class='bx bxs-star-half'></i>
+                                        </div>
+                                        <div class="rating-total">
+                                            4.5 (2 rating)
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="courses-box-footer">
+                                    <ul>
+                                        <li class="students-number">
+                                            <i class='bx bx-user'></i> 15 students
+                                        </li>
+                                        <li class="courses-lesson">
+                                            <i class='bx bx-book-open'></i> 10 lessons
+                                        </li>
+                                        <li class="courses-price">
+                                            $250
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="col-lg-4">
+                <div class="courses-sidebar-information">
+                    <ul>
+                        <li>
+                            <span><i class='bx bx-group'></i> Cupos:</span>
+                            {{ course.cupos }}
+                        </li>
+                        <li>
+                            <span><i class='bx bx-time'></i> Duración:</span>
+                            {{ course.length }} {{ course.length_unit.name | lowercase}}/s
+                        </li>
+                        <li>
+                            <span><i class='bx bx-tachometer'></i> Carga horaria:</span>
+                            {{ course.effort }}
+                        </li>
+
+                        <!-- <li>
+                            <span><i class='bx bxs-graduation'></i> Subject:</span>
+                            Design
+                        </li> -->
+                        <!-- <li>
+                            <span><i class='bx bx-atom'></i> Quizzes:</span>
+                            Yes
+                        </li> -->
+                        <li>
+                            <span><i class='bx bx-badge-check'></i> Nivel:</span>
+                            {{ course.level.name}}
+                        </li>
+                        <!-- <li>
+                            <span><i class='bx bx-support'></i> Language:</span>
+                            English
+                        </li> -->
+                        <!-- <li>
+                            <span><i class='bx bx-text'></i> Video Subtitle:</span>
+                            English
+                        </li> -->
+                        <li>
+                            <span><i class='bx bx-certification'></i> Certificado:</span>
+                            {{ course.certificate }}
+                        </li>
+                        <li>
+                            <span style="width: 100%;"><i class='bx bxs-institution'></i> Horarios:</span>
+                            <p *ngFor="let schrdule of course.schedules">
+                                {{ schrdule.day }} de {{ schrdule.h_ini }} a {{ schrdule.h_end }}
+                            </p>
+                                    
+                                                         
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="courses-sidebar-syllabus">
+                    <h3>Programa de Estudio</h3>
+                    <span *ngFor="let section of course.course_sections">
+                        <span class="chapter">Tema {{ section.title }}</span>
+                        <h4>Clases</h4>
+                        <div class="courses-list">
+                            <ul>
+                                <li *ngFor="let lesson of section.lessons; let i=index">
+                                    <a routerLink="/single-courses">
+                                        <span class="number">{{ i+1 }}.</span> 
+                                        {{ lesson.name }}. ({{ lesson.duration }})
+                                        <!-- <span class="free-lesson">Free</span> -->
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                    </span>
+                </div>
+
+                <div class="courses-purchase-info">
+                    <h4>¿Interesado en este curso para su empresa o equipo?</h4>
+                    <p>Contamos con planes para empresas o grupos.</p>
+                    <p>Brindamos capacitaciones en nuestro centro, o a domicilio en su empresa.</p>
+
+                    <!-- <a routerLink="/single-courses" class="d-inline-block">Purchase now</a> -->
+                    <a routerLink="/" class="d-inline-block">Solicitar Información</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

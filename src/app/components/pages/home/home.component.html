@@ -2,7 +2,6 @@
 
 <app-main-banner></app-main-banner>
 
-<app-about-section-a></app-about-section-a>
 <section *ngIf="categories" class="courses-categories-area bg-image pt-100 pb-70">
     <div class="container">
         <div class="section-title text-left">
@@ -29,6 +28,9 @@
         </div>
     </div>
 </section>
+
+<app-about-section-a></app-about-section-a>
+
 
 <app-courses-destac [courses]="coursesDestac$ | async | slice : 0:6"></app-courses-destac>
 

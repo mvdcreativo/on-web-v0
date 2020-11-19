@@ -1,0 +1,62 @@
+    .form-group {
+        margin-bottom: 25px;
+        .nice-select{
+            background-color: gray!important;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font: {
+                weight: 500;
+                size: 14px;
+            };
+            .required {
+                color: red;
+            }
+        }
+
+        .form-control {
+            background: #f3f3f3;
+            border-color: #f3f3f3;
+
+            &::placeholder {
+                color: var(--paragraphColor);
+                transition: var(--transition);
+            }
+            &:focus {
+                background-color: transparent;
+                border-color: #eeeeee;
+
+                &::placeholder {
+                    color: transparent;
+                }
+            }
+        }
+        .m-select{
+            display: grid;
+            padding-right: 5px;
+            align-items: center!important;
+        }
+    }
+    .form-check {
+        margin-bottom: 20px;
+
+        .form-check-label {
+            color: var(--blackColor);
+        }
+        label {
+            position: relative;
+            left: -3px;
+            top: 1px;
+            font: {
+                weight: 500;
+            }
+        }
+    }
+    .col-lg-12 {
+        &:last-child {
+            .form-group {
+                margin-bottom: 0;
+            }
+        }
+    }

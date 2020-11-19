@@ -2,11 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Injectable()
 
 export class AuthInterceptor implements HttpInterceptor {
-    constructor() {}
+    constructor(
+        private router : Router,
+        private  authService: AuthService
+    ) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const requestUrl: Array<any> = req.url.split('/');
@@ -14,29 +19,30 @@ export class AuthInterceptor implements HttpInterceptor {
         // console.log(apiUrl);
         // console.log(requestUrl);
         
-        let accderUrl = `${environment.API}auth/login`;
-        let register = `${environment.API}auth/signup`;
+        let accderUrl = `${environment.AuthAPI}login`;
+        let register = `${environment.AuthAPI}signup`;
         // console.log(accderUrl);
         // console.log(req.url);
         
         
-        if(requestUrl[2] === apiUrl[2]
-            // && requestUrl[4] === apiUrl[4]
+        if( requestUrl[2] === apiUrl[2]
             && req.url !== accderUrl
             && req.url !== register){
                 // console.log();
-            if(localStorage.getItem('currentUser')){
-                const currentUser = localStorage.getItem('currentUser');
-                const token = JSON.parse(currentUser).token;
+            if(localStorage.getItem('tokenU')){
+                const currentUser = localStorage.getItem('tokenU');
+                const token = JSON.parse(currentUser);
                 // console.log(token);
                 if(token){
                     // console.log(token)
                     const headers = req.headers
-                    .set('Authorization', `Bearer ${token}`);
+                    .set('Authorization', `Bearer ${token}`)
+                    .set('Accept', `application/json`);
                     const authReq = req.clone({ headers });
                     return next.handle(authReq);
                 }
             }else{
+                // this.authService.getUserAuth()
                 return next.handle(req);
             }
             

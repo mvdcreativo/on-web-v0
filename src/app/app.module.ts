@@ -15,8 +15,6 @@ import { PartnerStyleOneComponent } from './components/common/partner-style-one/
 import { InstructorsStyleOneComponent } from './components/common/instructors-style-one/instructors-style-one.component';
 import { BecomeInstructorPartnerComponent } from './components/common/become-instructor-partner/become-instructor-partner.component';
 import { FeedbackStyleOneComponent } from './components/common/feedback-style-one/feedback-style-one.component';
-import { BlogComponent } from './components/common/blog/blog.component';
-import { HeaderStyleTwoComponent } from './components/common/header-style-two/header-style-two.component';
 import { OurMissionComponent } from './components/common/our-mission/our-mission.component';
 import { InstructorsStyleTwoComponent } from './components/common/instructors-style-two/instructors-style-two.component';
 import { WebinarCountdownComponent } from './components/common/webinar-countdown/webinar-countdown.component';
@@ -57,7 +55,7 @@ import { InstructorsPageOneComponent } from './components/pages/instructors-page
 import { InstructorsPageTwoComponent } from './components/pages/instructors-page-two/instructors-page-two.component';
 import { InstructorsPageThreeComponent } from './components/pages/instructors-page-three/instructors-page-three.component';
 import { InstructorsDetailsPageComponent } from './components/pages/instructors-details-page/instructors-details-page.component';
-import { GalleryPageComponent } from './components/pages/gallery-page/gallery-page.component';
+// import { GalleryPageComponent } from './components/pages/gallery-page/gallery-page.component';
 import { EventsPageComponent } from './components/pages/events-page/events-page.component';
 import { EventsDetailsPageComponent } from './components/pages/events-details-page/events-details-page.component';
 import { PricingPageComponent } from './components/pages/pricing-page/pricing-page.component';
@@ -66,10 +64,7 @@ import { PartnerPageComponent } from './components/pages/partner-page/partner-pa
 import { FaqPageComponent } from './components/pages/faq-page/faq-page.component';
 import { ErrorPageComponent } from './components/pages/error-page/error-page.component';
 import { ComingSoonPageComponent } from './components/pages/coming-soon-page/coming-soon-page.component';
-import { BlogGridPageComponent } from './components/pages/blog-grid-page/blog-grid-page.component';
-import { BlogRightSidebarPageComponent } from './components/pages/blog-right-sidebar-page/blog-right-sidebar-page.component';
-import { BlogFullWidthPageComponent } from './components/pages/blog-full-width-page/blog-full-width-page.component';
-import { BlogDetailsPageComponent } from './components/pages/blog-details-page/blog-details-page.component';
+
 import { ShopGridPageComponent } from './components/pages/shop-grid-page/shop-grid-page.component';
 import { ShopFullWidthPageComponent } from './components/pages/shop-full-width-page/shop-full-width-page.component';
 import { ProductsDetailsPageComponent } from './components/pages/products-details-page/products-details-page.component';
@@ -79,26 +74,27 @@ import { ContactPageComponent } from './components/pages/contact-page/contact-pa
 // import { CategoryPageOneComponent } from './components/pages/category-page-one/category-page-one.component';
 // import { CategoryPageTwoComponent } from './components/pages/category-page-two/category-page-two.component';
 // import { CategoryPageThreeComponent } from './components/pages/category-page-three/category-page-three.component';
-import { CoursesListPageComponent } from './components/pages/courses-list-page/courses-list-page.component';
+// import { CoursesListPageComponent } from './components/pages/courses-list-page/courses-list-page.component';
 // import { CoursesGridStyleOneColumnsThreePageComponent } from './components/pages/courses-grid-style-one-columns-three-page/courses-grid-style-one-columns-three-page.component';
 import { CoursesGridStyleOneColumnsFourPageComponent } from './components/pages/courses-grid-style-one-columns-four-page/courses-grid-style-one-columns-four-page.component';
 import { CoursesGridStyleTwoColumnsTwoPageComponent } from './components/pages/courses-grid-style-two-columns-two-page/courses-grid-style-two-columns-two-page.component';
 import { CoursesGridStyleTwoColumnsThreePageComponent } from './components/pages/courses-grid-style-two-columns-three-page/courses-grid-style-two-columns-three-page.component';
 import { CoursesGridStyleThreeColumnsTwoPageComponent } from './components/pages/courses-grid-style-three-columns-two-page/courses-grid-style-three-columns-two-page.component';
 import { CoursesGridStyleThreeColumnsThreePageComponent } from './components/pages/courses-grid-style-three-columns-three-page/courses-grid-style-three-columns-three-page.component';
-import { CoursesDetailsPageComponent } from './components/pages/courses-details-page/courses-details-page.component';
+// import { CoursesDetailsPageComponent } from './components/pages/courses-details-page/courses-details-page.component';
 import { MyDashboardPageComponent } from './components/pages/my-dashboard-page/my-dashboard-page.component';
-import { OrdersPageComponent } from './components/pages/orders-page/orders-page.component';
 import { DownloadsPageComponent } from './components/pages/downloads-page/downloads-page.component';
-import { EditAddressPageComponent } from './components/pages/edit-address-page/edit-address-page.component';
-import { EditAccountPageComponent } from './components/pages/edit-account-page/edit-account-page.component';
-import { EditBillingAddressPageComponent } from './components/pages/edit-billing-address-page/edit-billing-address-page.component';
-import { EditShippingAddressPageComponent } from './components/pages/edit-shipping-address-page/edit-shipping-address-page.component';
 import { SharedModule } from './shared/shared.module';
 import { StylesService } from './services/styles.service';
 import { indexAuthInterceptor } from './auth/helpers/index-auth.interceptor';
 import { ReplaySubject } from 'rxjs';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './shared/material/material.module';
+import { AuthModule } from './auth/auth.module';
+import { MyDashboardPageModule } from './components/pages/my-dashboard-page/my-dashboard-page.module';
+import { CheckoutPageModule } from './components/pages/checkout-page/checkout-page.module';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 
 
@@ -116,8 +112,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     InstructorsStyleOneComponent,
     BecomeInstructorPartnerComponent,
     FeedbackStyleOneComponent,
-    BlogComponent,
-    HeaderStyleTwoComponent,
 
     OurMissionComponent,
     InstructorsStyleTwoComponent,
@@ -159,7 +153,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     InstructorsPageTwoComponent,
     InstructorsPageThreeComponent,
     InstructorsDetailsPageComponent,
-    GalleryPageComponent,
+    // GalleryPageComponent,
     EventsPageComponent,
     EventsDetailsPageComponent,
     PricingPageComponent,
@@ -168,44 +162,37 @@ import { ReactiveFormsModule } from '@angular/forms';
     FaqPageComponent,
     ErrorPageComponent,
     ComingSoonPageComponent,
-    BlogGridPageComponent,
-    BlogRightSidebarPageComponent,
-    BlogFullWidthPageComponent,
-    BlogDetailsPageComponent,
     ShopGridPageComponent,
     ShopFullWidthPageComponent,
     ProductsDetailsPageComponent,
-    CartPageComponent,
-    CheckoutPageComponent,
     ContactPageComponent,
     // CategoryPageOneComponent,
     // CategoryPageTwoComponent,
     // CategoryPageThreeComponent,
-    CoursesListPageComponent,
+    // CoursesListPageComponent,
     // CoursesGridStyleOneColumnsThreePageComponent,
     CoursesGridStyleOneColumnsFourPageComponent,
     CoursesGridStyleTwoColumnsTwoPageComponent,
     CoursesGridStyleTwoColumnsThreePageComponent,
     CoursesGridStyleThreeColumnsTwoPageComponent,
     CoursesGridStyleThreeColumnsThreePageComponent,
-    CoursesDetailsPageComponent,
-    MyDashboardPageComponent,
-    OrdersPageComponent,
+    // CoursesDetailsPageComponent,
     DownloadsPageComponent,
-    EditAddressPageComponent,
-    EditAccountPageComponent,
-    EditBillingAddressPageComponent,
-    EditShippingAddressPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule,
+    MyDashboardPageModule,
+    
+
   ],
   providers: [
     indexAuthInterceptor,
-  
+    {provide: MAT_DATE_LOCALE, useValue: 'es-UY'},
+
   ],
   bootstrap: [AppComponent]
 })

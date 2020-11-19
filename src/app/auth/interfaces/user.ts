@@ -1,27 +1,52 @@
-export interface User {
-    id?: number;
-    name?: string;
-    lastname: any;
-    email: string;
-    password: string;
-    role: string;
-    email_verified_at?: any;
-    city:string;
-    neighborhood_id:number;
-    address: any;
-    discount?: any;
-    company?: any;
-    rut?: any;
-    ci?: any;
-    phone?: any;
-    created_at: string;
-    updated_at: string;
-    state: any;
-    id_cliente_cobrosya?:any;
-
+export interface Account {
+    user_id: number;
+    bio: string;
+    certificated: string;
+    rating_up: number;
+    rating_down: number;
+    n_identification: string;
+    phone_one: string;
+    phone_two?: any;
+    address_one: string;
+    address_two?: any;
+    image: string;
+    role_id: number;
+    birth: Date;
+    created_at: Date;
+    updated_at: Date;
+    deleted_at?: any;
+    user: User;
+    role: Role;
+    n_doc_iden: any;
+    type_doc_iden: any;
 }
+
+
+export interface User {
+    id: number;
+    name: string;
+    last_name: string;
+    password: string;
+    slug: string;
+    email: string;
+    email_verified_at: Date;
+    account?: Account;
+    created_at: Date;
+    updated_at: Date;
+}
+
+export interface Role {
+    id: number;
+    name: string;
+    description: string;
+    created_at: Date;
+    updated_at: Date;
+    deleted_at?: any;
+}
+
+
 export interface CurrentUser {
     token: string;
     token_type: string;
-    user: User
 }
+

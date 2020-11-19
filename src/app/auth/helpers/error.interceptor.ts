@@ -19,15 +19,13 @@ export class ErrorInterceptor implements HttpInterceptor {
                     
                 }
                 
-                localStorage.removeItem('currentUser')               
+                // this.authService.getUserAuth();
                 
-                // 
-                // location.reload(true);
 
             }
 
             const error = err.error.message || err.statusText;
-            console.log(error);
+            // console.error(error);
             
             return throwError(error);
 

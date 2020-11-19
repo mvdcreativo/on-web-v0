@@ -10,7 +10,7 @@
             <div class="col-lg-4 col-md-6" *ngFor="let course of courses">
                 <div class="single-courses-box mb-30" >
                     <div class="courses-image">
-                        <a [routerLink]="['/curso', course.slug ]" class="d-block"><img [src]="course.image" alt="image"></a>
+                        <a [routerLink]="['/cursos/curso', course.slug ]" class="d-block"><img [src]="course.image" alt="image"></a>
 
                         <div class="courses-tag" *ngFor="let category of course.categories" 
                         [ngStyle]="{'background-color': category.color, 'color': '#fff'}"
@@ -26,7 +26,7 @@
                             <span>{{ course.user_instructor.name }}</span>
                         </div>
 
-                        <h3><a [routerLink]="['/curso', course.slug ]" class="d-inline-block">{{ course.title }}</a></h3>
+                        <h3><a [routerLink]="['/cursos/curso', course.slug ]" class="d-inline-block">{{ course.title }}</a></h3>
 
                         <!-- <div class="courses-rating">
                             <div class="review-stars-rated">

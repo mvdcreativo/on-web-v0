@@ -4,6 +4,7 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 import { filter } from 'rxjs/operators';
 import { StylesService } from './services/styles.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AuthService } from './auth/auth.service';
 declare let $: any;
 
 @Component({
@@ -25,11 +26,15 @@ export class AppComponent implements OnInit {
         private router: Router,
         private stylesServices : StylesService,
         private elementRef : ElementRef,
-        private sanitizer: DomSanitizer
-        ) {
+        private sanitizer: DomSanitizer,
+        private authService: AuthService
+    ) 
+    {
+        
     }
 
     ngOnInit(){
+        this.authService.checkUser()
         this.recallJsFuntions();
         this.stylesServices.mainColor$.subscribe(
             color => this.changeColor(color)

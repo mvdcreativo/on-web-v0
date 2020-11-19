@@ -66,7 +66,7 @@ export class AccessComponent implements OnInit {
             let message, status;
             message = error;
             status = 'error';
-            this.authService.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 5000 });
+            // this.authService.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 5000 });
           }
         }
     );
@@ -170,42 +170,42 @@ export class AccessComponent implements OnInit {
 
     /////LOGIN SOCIAL
     signInWithGoogle(): void {
-      this.authService.signInWithGoogle().then(
-        data => {
-          // console.log(data);
-          if (this.returnUrl) {
-            this.router.navigate([this.returnUrl]);
-          } else {
-            this.router.navigate(['/']);
-          }
-        }
-      ).catch(
-        error => {
-          this.error = error;
-          // this.loading = false;
-        }
-      )
+      // this.authService.signInWithGoogle().then(
+      //   data => {
+      //     // console.log(data);
+      //     if (this.returnUrl) {
+      //       this.router.navigate([this.returnUrl]);
+      //     } else {
+      //       this.router.navigate(['/']);
+      //     }
+      //   }
+      // ).catch(
+      //   error => {
+      //     this.error = error;
+      //     // this.loading = false;
+      //   }
+      // )
     }
    
     signInWithFB(): void {
-      this.authService.signInWithFB().then(
-        data => {
-          console.log(data);
-          if (this.returnUrl) {
-            this.router.navigate([this.returnUrl]);
-          } else {
-            this.router.navigate(['/']);
-          }
-        }
-      ).catch(
-        error => {
-          this.error = error;
-          // this.loading = false;
-        }
-      )
-    } 
+    //   this.authService.signInWithFB().then(
+    //     data => {
+    //       console.log(data);
+    //       if (this.returnUrl) {
+    //         this.router.navigate([this.returnUrl]);
+    //       } else {
+    //         this.router.navigate(['/']);
+    //       }
+    //     }
+    //   ).catch(
+    //     error => {
+    //       this.error = error;
+    //       // this.loading = false;
+    //     }
+    //   )
+    // } 
    
-    signOut(): void {
-      this.authService.signOut();
+    // signOut(): void {
+    //   this.authService.signOut();
     }
 }

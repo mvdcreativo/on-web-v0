@@ -31,7 +31,7 @@ export class LoginPageComponent implements OnInit {
       data => this.returnUrl = data.get('returnUrl')
     );
     // reset login status
-    this.reLogout();
+    // this.reLogout();
   }
 
   createForm(){

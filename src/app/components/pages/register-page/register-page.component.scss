@@ -90,6 +90,9 @@
                     color: var(--whiteColor);
                     border-color: var(--optionalColor);
                 }
+                &:disabled{
+                    background-color: rgb(202, 202, 202);
+                }
             }
             .connect-with-social {
                 margin-top: 20px;

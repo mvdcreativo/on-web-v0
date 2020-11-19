@@ -24,19 +24,31 @@
                             </div>
                             <h3>Créate una cuenta AHORA!</h3>
                             <p>Ya tienes una cuenta? <a routerLink="/login">Entrar</a></p>
-                            <form>
-                                <div class="form-group">
-                                    <input type="email" name="email" id="email" placeholder="Tu E-mail" class="form-control">
+                            <form [formGroup]="form">
+                                <div class="row">
+                                    <div class="form-group col-lg-6 col-md-12">
+                                        <input type="text" formControlName="name" placeholder="*Nombre" class="form-control" autocomplete="off">
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-12">
+                                        <input type="text" formControlName="last_name" placeholder="*Apellido" class="form-control" autocomplete="off">
+                                    </div>
+
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="password" id="password" placeholder="Escribe una contraseña" class="form-control">
+                                    <input type="email" formControlName="email" placeholder="*Tu E-mail" class="form-control" autocomplete="off">
                                 </div>
-                                <button type="submit">Registrar</button>
-                                <div class="connect-with-social">
+                                <div class="form-group">
+                                    <input type="password" formControlName="password" placeholder="*Escribe una contraseña" class="form-control" autocomplete="off">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" formControlName="password_confirmation" placeholder="*Vuelve a escribir tu contraseña" class="form-control" autocomplete="off">
+                                </div>
+                                <button (click)="onSubmit()" [disabled]="!form.valid" type="submit">Registrar</button>
+                                <!-- <div class="connect-with-social">
                                     <span>Or</span>
                                     <button type="submit" class="facebook"><i class='bx bxl-facebook'></i> Entrar con Facebook</button>
                                     <button type="submit" class="twitter"><i class='bx bxl-google'></i> Entrar con Google</button>
-                                </div>
+                                </div> -->
                             </form>
                         </div>
                     </div>

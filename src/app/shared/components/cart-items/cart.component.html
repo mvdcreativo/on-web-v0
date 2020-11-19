@@ -1,0 +1,50 @@
+<div class="cart-table table-responsive">
+    <ng-container *ngIf="products.length >=1 ; else elseTemplate">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Curso/Lección</th>
+                    <th scope="col">Descripción</th>
+                    <!-- <th scope="col">Unit Price</th>
+                    <th scope="col">Quantity</th> -->
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of products">
+                    <td class="product-thumbnail">
+                        <a [routerLink]="['/cursos/curso', item.product.slug]">
+                            <img [src]="item.product.image" alt="item">
+                        </a>
+                    </td>
+                    <td class="product-name">
+                        <a [routerLink]="['/cursos/curso', item.product.slug]">{{ item.product.title }}</a>
+                    </td>
+                    <!-- <td class="product-price">
+                        <span class="unit-amount">$455.00</span>
+                    </td> -->
+                    <!-- <td class="product-quantity">
+                        <div class="input-counter">
+                            <span class="minus-btn"><i class='bx bx-minus'></i></span>
+                            <input type="text" min="1" value="1">
+                            <span class="plus-btn"><i class='bx bx-plus'></i></span>
+                        </div>
+                    </td> -->
+                    <td class="product-subtotal">
+                        <span class="subtotal-amount">{{ item.product.currency.symbol }} {{ item.product.price |number }}</span>
+                        <a (click)="remove(item)" class="remove"><i class='bx bx-trash'></i></a>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </ng-container>
+
+    <ng-template #elseTemplate>
+        <div class="cart-empty">
+            <h4>No tienes nada a pagar</h4>
+        </div>
+    </ng-template>
+    
+    
+</div>
