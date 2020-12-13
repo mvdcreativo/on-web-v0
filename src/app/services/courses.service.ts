@@ -21,7 +21,8 @@ export class CoursesService {
 
 
   constructor(
-    private http : HttpClient
+    private http : HttpClient,
+    
   ) {
  
    }
@@ -32,13 +33,15 @@ export class CoursesService {
   //   return this.http.get<ResponseCourses>(`${environment.API}courses`).pipe(map( res => res.data));
   // }
 
-  getProducts(currentPage = 1, perPage = 1000, filter='', sort= 'desc') : Observable<ResponsePaginate>{
+  getProducts(currentPage = 1, perPage = 1000, filter='', sort= 'desc', status=[1,3]) : Observable<ResponsePaginate>{
+    const status_ids = JSON.stringify(status)
     return this.http.get<ResponsePaginate>(`${environment.API}courses`, {
       params: new HttpParams()
         .set('page', currentPage.toString())
         .set('filter', filter)
         .set('sort', sort)
         .set('per_page', perPage.toString())
+        .set('status', status_ids)
 
     }).pipe(map(
       res => {
@@ -49,7 +52,9 @@ export class CoursesService {
         return resp;
       }
     ),
-    catchError(error => this.errorHandler(error))
+    catchError(error => {
+      return this.errorHandler(error)
+    })
     )
   }
 

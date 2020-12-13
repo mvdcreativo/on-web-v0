@@ -10,7 +10,9 @@
             <div class="col-lg-4 col-md-6" *ngFor="let course of courses">
                 <div class="single-courses-box mb-30" >
                     <div class="courses-image">
-                        <a [routerLink]="['/cursos/curso', course.slug ]" class="d-block"><img [src]="course.image" alt="image"></a>
+                        <a [routerLink]="['/cursos/curso', course.slug ]" class="d-block">
+                            <img [src]="course.image" alt="image">
+                        </a>
 
                         <div class="courses-tag" *ngFor="let category of course.categories" 
                         [ngStyle]="{'background-color': category.color, 'color': '#fff'}"
@@ -46,7 +48,7 @@
                     <div class="courses-box-footer">
                         <ul>
                             <li class="students-number">
-                                <i class='bx bx-user'></i> {{ course.cupos }} cupos
+                                <i class='bx bx-user'></i> {{ course.cupos_confirmed }}/{{ course.cupos }} cupos
                             </li>
 
                             <li class="courses-lesson">

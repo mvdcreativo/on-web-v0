@@ -37,15 +37,7 @@ export class OrdersService implements OnDestroy {
   }
 
   storeOrder(data): Observable<any>{
-    return this.http.post<Response>(`${environment.API}orders`, data).pipe(
-      map( v => {
-        // this.getOrders(1, 20, '', 'desc').pipe(take(1)).subscribe()
-        //snacbarr
-        this.openSnackBar('Se creó correctamente','success-snack-bar')
-        //////////
-        return v
-      })
-    )
+    return this.http.post<Response>(`${environment.API}orders`, data)
 
   }
 

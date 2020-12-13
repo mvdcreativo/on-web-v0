@@ -45,32 +45,32 @@ export class CartService {
   public addToCart(product: Course, quantity: number){
     let message, status;
     var item: CartItem | boolean = false;
-    // If Products exist
-    let hasItem = products.find((items, index) => {
-      if (items.product.id == product.id) {
-        // let qty = products[index].quantity + quantity;
-        let qty = 1;//para este proyecto quantity siempre es 1
-        let stock = this.calculateStockCounts(products[index], quantity);
-        if (qty != 0 && stock) {
-          products[index]['quantity'] = qty;
-          message = 'El producto ' + product.title + ' se agrego tu carrito';
-          status = 'success';
-          this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
-        }
-        return true;
-      }
-      this.countItems$.next(products.length)
+    // // If Products exist
+    // let hasItem = products.find((items, index) => {
+    //   if (items.product.id == product.id) {
+    //     // let qty = products[index].quantity + quantity;
+    //     let qty = 1;//para este proyecto quantity siempre es 1
+    //     let stock = this.calculateStockCounts(products[index], quantity);
+    //     if (qty != 0 && stock) {
+    //       products[index]['quantity'] = qty;
+    //       message = 'El producto ' + product.title + ' se agrego tu carrito';
+    //       status = 'success';
+    //       this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
+    //     }
+    //     return true;
+    //   }
+    //   this.countItems$.next(products.length)
 
-    });
+    // });
 
-    // If Products does not exist (Add New Products)
-    if (!hasItem) {
+    // // If Products does not exist (Add New Products)
+    // if (!hasItem) {
       item = { product: product, quantity: quantity };
-      products.push(item);
+      products=[item];
       message = 'El producto ' + product.title + ' se agrego tu carrito';
       status = 'success';
-      this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
-    }
+      // this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 3000 });
+    // }
 
     ///ejecuta Pixel Facebook
     this.facebookAddToCart(product, quantity);

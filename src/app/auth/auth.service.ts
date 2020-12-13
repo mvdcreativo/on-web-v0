@@ -32,10 +32,6 @@ export class AuthService implements OnInit, OnDestroy{
 
   ) {
     this.error$ = this.errorSubject.asObservable();
-    // this.subscriptions.push(
-    //   this.error$.subscribe( err => err ? this.router.navigate['/auth/login']: null)
-    // )
-    // if(this.errorValue) this.router.navigate['/auth/login']
   }
 
   ngOnInit(): void {
@@ -75,7 +71,7 @@ export class AuthService implements OnInit, OnDestroy{
 //////////////////////////////
   getUserAuth() {
   
-      this.http.get<User>(`${environment.API}auth/user`)
+     this.http.get<User>(`${environment.API}auth/user`)
       .subscribe(
         res => {
           if(res){
@@ -87,7 +83,7 @@ export class AuthService implements OnInit, OnDestroy{
         error => {
           localStorage.removeItem('tokenU');
           this.currentUserSubject$.next(null);
-          this.router.navigate(['/auth/login']);
+          this.router.navigate(['/login']);
         }
       )
 
@@ -105,7 +101,7 @@ export class AuthService implements OnInit, OnDestroy{
           // console.log(user);
           if (res?.user?.token) {
             let message, status;
-            message = `Hola!! Gracias por egistrarte ${res.user.user.name} `;
+            message = `Hola!! Gracias por registrarte ${res.user.user.name} `;
             status = 'success';
             // this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 5000 });
             console.log(res);

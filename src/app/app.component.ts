@@ -30,11 +30,11 @@ export class AppComponent implements OnInit {
         private authService: AuthService
     ) 
     {
-        
+        this.authService.checkUser()
     }
 
     ngOnInit(){
-        this.authService.checkUser()
+        
         this.recallJsFuntions();
         this.stylesServices.mainColor$.subscribe(
             color => this.changeColor(color)
@@ -42,26 +42,28 @@ export class AppComponent implements OnInit {
     }
 
     recallJsFuntions() {
-        this.router.events
-        .subscribe((event) => {
+        this.router.events.subscribe((event) => {
             if ( event instanceof NavigationStart ) {
                 $('.preloader').fadeIn('slow');
             }
         });
+
         this.routerSubscription = this.router.events
-        .pipe(filter(event => event instanceof NavigationEnd || event instanceof NavigationCancel))
-        .subscribe(event => {
-            $.getScript('../assets/js/main.js');
-            $('.preloader').fadeOut('slow');
-            this.location = this.router.url;
-            if (!(event instanceof NavigationEnd)) {
-                return;
-            }
-            window.scrollTo(0, 0);
+            .pipe(
+                filter(event => event instanceof NavigationEnd || event instanceof NavigationCancel)
+            )
+            .subscribe(event => {
+                // $.getScript('../assets/js/main.js');
+                $('.preloader').fadeOut('slow');
+                this.location = this.router.url;
+                if (!(event instanceof NavigationEnd)) {
+                    return;
+                }
+                window.scrollTo(0, 0);
 
-            this.stylesServices.setMainColor();
+                this.stylesServices.setMainColor();
 
-        });
+            });
     }
 
 

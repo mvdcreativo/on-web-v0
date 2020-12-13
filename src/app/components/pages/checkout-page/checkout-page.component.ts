@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
-import { count, first, take } from 'rxjs/operators';
+import { count, first, map, take } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { User } from 'src/app/auth/interfaces/user';
 import { Course } from 'src/app/interfaces/course';
@@ -11,6 +11,9 @@ import { CartService } from '../cart-page/services/cart.service';
 
 import { get } from 'scriptjs'; 
 import { OrdersService } from '../my-dashboard-page/orders-page/services/orders.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogCuposComponent } from './dialog-cupos/dialog-cupos.component';
+import { UsersService } from 'src/app/auth/users.service';
 
 @Component({
   selector: 'app-checkout-page',
@@ -23,14 +26,19 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
   products: CartItem[];
   countItemsCart: number;
   subscription: Subscription[]=[];
-  user: User;
+  user: Observable<User>;
+  user_id: number;
 
 
   constructor(
     private cartService: CartService,
     private orderService: OrdersService,
-    private authServices: AuthService
-  ) { }
+    private authServices: AuthService,
+    private userService: UsersService,
+    public dialog: MatDialog
+  ) { 
+
+  }
 
   ngOnInit(): void {
     get("https://www.mercadopago.com.uy/integrations/v1/web-payment-checkout.js", () => {
@@ -38,11 +46,15 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
     });
     // const logged = this.authServices.checkUser()
     this.authServices.currentUser.subscribe(res=> {
-      // console.log(res);
-      
-      this.user = res
+      if(res && res.id){
+        this.user_id = res?.id
+        this.user = this.userService.getUser(res.id).pipe(map(v=>v.data))
+
+      }
     })
 
+    
+     
     this.formValid = false;
     this.subscription.push(
       this.cartService.countItems$.subscribe(res => {
@@ -73,7 +85,6 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
   }
 
 
-
   onSubmitOrder(){
     
 
@@ -87,30 +98,50 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
         course_id : v.product.id, 
         price: v.product.price, 
         currency_id: v.product.currency_id,
-        user_id: this.user?.id
+        user_id: this.user_id
       } 
     })
-    data.user_id = this.user?.id;
+    data.user_id = this.user_id;
     data.total = total;
     data.currency_id = this.products[0].product.currency_id
     // data.status_id = 0;
-    this.orderService.storeOrder(data).subscribe(
-      res=> {
-        const init_point = res.init_point;
-        console.log(res.init_point)
-        if(init_point){
-          
-          window.location.href = init_point;
-        }
-      }
-      
+    this.subscription.push(
+      this.orderService.storeOrder(data).subscribe(
+        res=> {
+          const init_point = res.init_point;
+          const newCourse = res.new_course
+          if(newCourse){
+            this.openDialogCupos(newCourse)
+          }
+          if(init_point){
+            window.location.href = init_point;
+          }
+        },
+        // err => this.openDialogCupos()
+        
+        
+      )
     )
-    console.log(data);
+  
     
   }
 
   ngOnDestroy(): void {
 
     this.subscription.map(v=>v.unsubscribe())
+  }
+
+
+  openDialogCupos(course): void {
+    const dialogRef = this.dialog.open(DialogCuposComponent, {
+      maxWidth: '100%',
+      width: '550px',
+      data: course
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      
+    });
   }
 }

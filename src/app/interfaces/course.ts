@@ -63,6 +63,7 @@
         title: string;
         slug: string;
         cupos: number;
+        cupos_confirmed:number;
         image: string;
         schedules?: Schedule[];
         date_ini?: Date;

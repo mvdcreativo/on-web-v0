@@ -124,7 +124,8 @@ const routes: Routes = [
       path: 'carrito', 
       loadChildren: ()=> import('./components/pages/cart-page/cart-page.module').then(m => m.CartPageModule),
     },
-    { path: '**', component: ErrorPageComponent }
+    { path: 'pagina-no-encontrada', component: ErrorPageComponent },
+    { path: '**', redirectTo: '/pagina-no-encontrada', pathMatch: 'full' }
 ];
 
 @NgModule({

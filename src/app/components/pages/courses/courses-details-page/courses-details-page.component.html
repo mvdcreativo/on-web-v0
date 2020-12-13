@@ -1,11 +1,11 @@
 <app-header></app-header>
 
-<section *ngIf="course$ | async as course" class="courses-details-area pt-100 pb-70">
-    <div class="container">
+<section  class="courses-details-area pt-100 pb-70">
+    <div *ngIf="course$ | async as course" class="container">
         <div class="courses-details-header">
             <div class="row align-items-center">
                 <div class="col-lg-8">
-                    <div class="courses-title">
+                    <div *ngIf="course$ | async; else loading" class="courses-title">
                         <h2>{{ course.title }}</h2>
                         <p>{{ course.description | slice : 0:80  }}...</p>
                     </div>
@@ -26,7 +26,7 @@
                                 <span>Students Enrolled</span>
                                 <a routerLink="/single-courses">813,454</a>
                             </li> -->
-                            <li>
+                            <li *ngIf="course$ | async">
                                 <i class='bx bx-calendar'></i>
                                 <span>Inicio</span>
                                 <a routerLink="/single-courses">{{ course.date_ini | date : 'dd-MM-yyyy' }}</a>
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="courses-price">
+                    <div class="courses-price" *ngIf="course$ | async; else loading">
                         <!-- <div class="courses-review">
                             <div class="review-stars">
                                 <i class='bx bxs-star'></i>
@@ -63,7 +63,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="courses-details-image text-center">
-                    <img [src]="course.image" alt="image">
+                    <img  *ngIf="course$ | async; else loading"  [src]="course.image" alt="image">
                 </div>
 
                 <div class="courses-details-desc">
@@ -348,3 +348,10 @@
         </div>
     </div>
 </section>
+
+<ng-template #loading>
+    <div class="div-content">
+        <div class="loading"><div></div><div></div><div></div></div>
+
+    </div>
+</ng-template>

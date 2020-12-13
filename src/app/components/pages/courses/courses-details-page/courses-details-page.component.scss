@@ -1,7 +1,10 @@
+.courses-details-area{
+    min-height: 100vh;
+}
 .courses-details-header {
     margin-bottom: 30px;
     margin-top: 100px;
-
+    height: 130px!important;
     .courses-title {
         h2 {
             margin-bottom: 12px;
@@ -70,14 +73,18 @@
         text-align: right;
 
         .price {
+            height: 55px!important;
             display: inline-block;
             margin-right: 15px;
-            position: relative;
             top: 6px;
+            position: relative;
             font: {
                 size: 35px;
                 weight: 600;
             };
+
+            
+            
         }
         .default-btn {
             border-radius: 5px;
@@ -111,7 +118,7 @@
 }
 .courses-details-image {
     border-radius: 5px;
-
+    min-height: 500px;
     img {
         width: 100%;
         border-radius: 5px;

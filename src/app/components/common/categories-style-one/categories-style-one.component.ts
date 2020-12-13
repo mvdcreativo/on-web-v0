@@ -15,18 +15,20 @@ export class CategoriesStyleOneComponent implements OnInit {
   config: SwiperConfigInterface = {
     a11y: true,
     direction: 'horizontal',
+    // loop: true,
     slidesPerView: 1.3,
+    initialSlide: 0,
+    slidesPerColumn: 1.3, 
     slideToClickedSlide: true,
     mousewheel: true,
-    scrollbar: false,
+    // scrollbar: false,
     autoplay:true,
     // zoom:true,
     // watchSlidesProgress: true,
-    navigation: true,
-    keyboard: true,
+    navigation: false,
     // pagination: false,
     // centeredSlides: true,
-    // loop: true,
+
     // roundLengths: true,
     // slidesOffsetBefore: 100,
     // slidesOffsetAfter: 100,
@@ -35,14 +37,26 @@ export class CategoriesStyleOneComponent implements OnInit {
         // when window width is >= 320px
         520: {
             slidesPerView: 2,
-            autoplay:true,
+            // autoplay:true,
+            navigation: false,
+            initialSlide: 0,
+            slidesPerColumn: 2, 
+
             // slidesOffsetBefore: 100,
         },
         770: {
-          slidesPerView: 3
+          slidesPerView: 3,
+          navigation: false,
+          initialSlide: 0,
+          slidesPerColumn: 3, 
+
         },
         1000: {
-          slidesPerView: 4
+          slidesPerView: 4,
+          navigation: false,
+          initialSlide: 0,
+          slidesPerColumn: 4, 
+
         }
     }
 };

@@ -10,7 +10,6 @@ import { CategoriesStyleOneComponent } from './components/categories-style-one/c
 import { HeaderComponent } from './components/header/header.component';
 import { CoursesDestacComponent } from './components/courses-destac/courses-destac.component';
 import { TmNgOdometerModule } from 'tm-ng-odometer';
-import { MercadoPagoComponent } from './components/mercado-pago/mercado-pago.component';
 import { MaterialModule } from './material/material.module';
 import { AuthModule } from '../auth/auth.module';
 import { UserActionsComponent } from './components/header/user-actions/user-actions.component';
@@ -33,7 +32,6 @@ import { DinamicFormComponent } from './components/dinamic-form/dinamic-form.com
     CategoriesStyleOneComponent,
     HeaderComponent,
     CoursesDestacComponent,
-    MercadoPagoComponent,
     CourseItemComponent,
     PaymentFormComponent,
     CartComponent,
@@ -46,7 +44,7 @@ import { DinamicFormComponent } from './components/dinamic-form/dinamic-form.com
     RouterModule,
     SwiperModule,
     ReactiveFormsModule,
-    FormsModule,
+    // FormsModule,
     TmNgOdometerModule,
     MaterialModule,
     MatMomentDateModule,

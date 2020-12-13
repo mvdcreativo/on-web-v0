@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MercadoPagoComponent } from './mercado-pago.component';
+import { DialogCuposComponent } from './dialog-cupos.component';
 
-describe('MercadoPagoComponent', () => {
-  let component: MercadoPagoComponent;
-  let fixture: ComponentFixture<MercadoPagoComponent>;
+describe('DialogCuposComponent', () => {
+  let component: DialogCuposComponent;
+  let fixture: ComponentFixture<DialogCuposComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MercadoPagoComponent ]
+      declarations: [ DialogCuposComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MercadoPagoComponent);
+    fixture = TestBed.createComponent(DialogCuposComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

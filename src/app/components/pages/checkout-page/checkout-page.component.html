@@ -13,7 +13,7 @@
                     <div class="billing-details">
                         <h3 class="title">Datos para el pago de la inscripción </h3>
 
-                        <app-payment-form (changes)="formChange($event)"> </app-payment-form>
+                        <app-payment-form  *ngIf="user|async as user" [user]="user" (changes)="formChange($event)"> </app-payment-form>
                         
                     </div>
                 </div>
