@@ -25,8 +25,9 @@
 
                             <h3>Bienvenidos</h3>
                             <p>Eres Nuevo? <a routerLink="/registro">Registrate</a></p>
-
                             <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+                                <span class="error-message">{{ error$ | async }}</span>
+
                                 <div class="form-group">
                                     <input type="email" formControlName="email" placeholder="*Correo electrónico" class="form-control">
                                 </div>
@@ -37,11 +38,11 @@
                                 <div class="forgot-password">
                                     <a routerLink="/">Olvide la contraseña</a>
                                 </div>
-                                <!-- <div class="connect-with-social">
-                                    <button class="facebook"><i class='bx bxl-facebook'></i> Entrar con Facebook</button>
-                                    <button class="twitter"><i class='bx bxl-google'></i> Entrar con Google</button>
-                                </div> -->
                             </form>
+                                <div class="connect-with-social">
+                                    <button (click)="signInWithFB()"  class="facebook"><i class='bx bxl-facebook'></i> Entrar con Facebook</button>
+                                    <button (click)="signInWithGoogle()" class="coogle"><i class='bx bxl-google'></i> Entrar con Google</button>
+                                </div>
                         </div>
                     </div>
                 </div>

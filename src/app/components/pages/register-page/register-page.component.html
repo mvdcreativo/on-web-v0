@@ -25,6 +25,7 @@
                             <h3>Créate una cuenta AHORA!</h3>
                             <p>Ya tienes una cuenta? <a routerLink="/login">Entrar</a></p>
                             <form [formGroup]="form">
+                                <span class="error-message">{{ error$ | async }}</span>
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-md-12">
                                         <input type="text" formControlName="name" placeholder="*Nombre" class="form-control" autocomplete="off">

@@ -27,6 +27,9 @@
 .container{
     // min-height: 100vh;
 }
+.error-message{
+    color: var(--color-warn);
+}
 .svg-logo{
     fill: var(--mainColor);
 }

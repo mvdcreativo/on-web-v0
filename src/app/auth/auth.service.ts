@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 // import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 
 import { environment } from 'src/environments/environment';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 // import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
@@ -16,28 +17,29 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService implements OnInit, OnDestroy{
 
-  private currentUserSubject$: BehaviorSubject<User> = new BehaviorSubject<any>(null);
+  private currentUserSubject$: BehaviorSubject<User>;
   public errorSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null)
   public error$: Observable<any>;
   subscriptions : Subscription[]=[]
 
-  // private user: SocialUser;
+  private user: SocialUser;
   private loggedIn: boolean;
 
   constructor(
     private router: Router,
     private http: HttpClient,
     // public snackBar: MatSnackBar,
-    // private authServiceSocial: AuthServiceSocial,
+    private authServiceSocial: SocialAuthService
+
 
   ) {
+    this.currentUserSubject$ = new BehaviorSubject<any>(null);
     this.error$ = this.errorSubject.asObservable();
   }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-
   }
 
   public get errorValue(): any {
@@ -238,70 +240,72 @@ solicitaResetPass(data) {
 
 
   
-    // /////LOGIN SOCIAL
-    // signInWithGoogle() {
-    //   return this.authServiceSocial.signIn(GoogleLoginProvider.PROVIDER_ID).then(
-    //     res => {
-    //       let credentials: SocialUser = res;
-    //       this.http.post<any>(`${environment.API}social-auth`, credentials).pipe(
-    //         take(1)).
-    //         subscribe(user => {
-    //           // login successful if there's a jwt token in the response
-    //           if (user && user.token) {
-    //             // store user details ands token in local storage to keep user logged in between page refreshes
-    //             localStorage.setItem('currentUser', JSON.stringify(user));
-    //             this.currentUserSubject$.next(user);
+    /////LOGIN SOCIAL
+    signInWithGoogle() {
+      return this.authServiceSocial.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+        res => {
+          let credentials: SocialUser = res;
+          this.http.post<any>(`${environment.API}social-auth`, credentials).pipe(
+            take(1)).
+            subscribe(user => {
+              // login successful if there's a jwt token in the response
+              if (user && user.token) {
+                // store user details ands token in local storage to keep user logged in between page refreshes
+                localStorage.setItem('tokenU', JSON.stringify(user.token));
+                this.currentUserSubject$.next(user.user);
     
-    //             let message, status;
-    //             message = `Hola de nuevo ${user.user.name}, gracias por preferirnos!`;
-    //             status = 'success';
-    //             this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 5000 });
-    //             // this.router.navigate(['admin'])
-    //             // console.log(user);
+                let message, status;
+                message = `Hola de nuevo ${user.user.name}, gracias por preferirnos!`;
+                status = 'success';
+                // this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 5000 });
+                // this.router.navigate(['admin'])
+                // console.log(user);
     
-    //           }
+              }
     
-    //           return user;
-    //         })
+              return user;
+            })
          
-    //       // console.log(this.user);
-    //       // console.log(res);
-    //     });
+          // console.log(this.user);
+          // console.log(res);
+        });
 
-    // }
+    }
    
-    // signInWithFB(){
-    //   return this.authServiceSocial.signIn(FacebookLoginProvider.PROVIDER_ID)
-    //   .then(
-    //     res => {
-    //       let credentials: SocialUser = res;
-    //       this.http.post<any>(`${environment.API}social-auth`, credentials).pipe(
-    //         take(1)).
-    //         subscribe(user => {
-    //           // login successful if there's a jwt token in the response
-    //           if (user && user.token) {
-    //             // store user details ands token in local storage to keep user logged in between page refreshes
-    //             localStorage.setItem('currentUser', JSON.stringify(user));
-    //             this.currentUserSubject$.next(user);
+    signInWithFB(){
+      return this.authServiceSocial.signIn(FacebookLoginProvider.PROVIDER_ID)
+      .then(
+        res => {
+          let credentials: SocialUser = res;
+
+          this.http.post<any>(`${environment.API}social-auth`, credentials).pipe(
+            take(1)).
+            subscribe(user => {
+              // login successful if there's a jwt token in the response
+              if (user?.token) {
+                // store user details ands token in local storage to keep user logged in between page refreshes
+                localStorage.setItem('tokenU', JSON.stringify(user.token));
+                this.currentUserSubject$.next(user.user);
     
-    //             let message, status;
-    //             message = `Hola de nuevo ${user.user.name}, gracias por preferirnos!`;
-    //             status = 'success';
-    //             this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 5000 });
-    //             // this.router.navigate(['admin'])
-    //             // console.log(user);
+                let message, status;
+                message = `Hola de nuevo ${user.user.name}, gracias por preferirnos!`;
+                status = 'success';
+                // this.snackBar.open(message, '×', { panelClass: [status], verticalPosition: 'top', duration: 5000 });
+                // this.router.navigate(['admin'])
+                // console.log(user);
     
-    //           }
-    
-    //           return user;
-    //         })
+              }
+              console.log(user);
+              
+              return user;
+            })
          
-    //       console.log(this.user);
-    //       console.log(res);
-    //     });
-    // } 
+          console.log(this.user);
+          console.log(res);
+        });
+    } 
    
-    // signOut(): void {
-    //   this.authServiceSocial.signOut();
-    // }
+    signOut(): void {
+      this.authServiceSocial.signOut();
+    }
 }

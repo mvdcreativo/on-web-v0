@@ -1,12 +1,12 @@
-<ng-container *ngIf="logged; then loged; else noLoged"></ng-container>
+<ng-container *ngIf="(currentUser | async) as currentUser; then loged; else noLoged"></ng-container>
 
 <ng-template #loged>
-    <div class="user" [ngClass]="{'color': true}">
+    <div *ngIf="(currentUser | async) as currentUser" class="user" [ngClass]="{'color': true}">
         <a class="account menu-user" [ngClass]="{'color': true}" 
             [matMenuTriggerFor]="menu" 
             #menuTrigger="matMenuTrigger"
             >
-            <span>Mi cuenta</span>
+            <span>{{ currentUser.name }} {{ currentUser.last_name }}</span>
             <i class="material-icons">person</i>
         </a>
         <!-- <a class="menu-user" [ngClass]="{'color': true}" aria-label="">

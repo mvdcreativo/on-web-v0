@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { User } from 'src/app/auth/interfaces/user';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Observable } from 'rxjs';
 // import { ModalAuthComponent } from '../modal-auth/modal-auth.component';
 
 @Component({
@@ -14,7 +15,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class UserActionsComponent implements OnInit {
 
   @Input('color') color: string = "#424242";
-  currentUser: User;
+  currentUser: Observable<User>;
   returnUrl: Params;
   menuTrigger: MatMenuTrigger;
   logged: boolean;
@@ -54,17 +55,7 @@ export class UserActionsComponent implements OnInit {
   checkUser() {
     this.logged = this._authService.checkUser()
 
-    this._authService.currentUser.subscribe(
-      (data:any) => {
-        if(data) {
-          // console.log(data);
-          
-          this.currentUser = data
-        }else{
-          this.currentUser = null
-        }
-      }
-    );
+    this.currentUser = this._authService.currentUser
   }
 
   public login(){

@@ -22,10 +22,25 @@ export class ErrorInterceptor implements HttpInterceptor {
                     
                 }
             }
+            if (err.status === 422) {
+                console.log(err.error.message);
+                
+                if(err.error.message === "The given data was invalid."){
+                    this.authService.errorSubject.next('El Usuario ya existe')
+                    
+                }
+            }
+
+
             if (err.status === 404) {
                 this.router.navigate(['/pagina-no-encontrada']);
             }
 
+
+            if(!err){
+                this.authService.errorSubject.next(null)
+
+            }
             const error = err.error.message || err.statusText;
             // console.error(error);
             

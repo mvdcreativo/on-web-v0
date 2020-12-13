@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class RegisterPageComponent implements OnInit, OnDestroy {
   subscription: Subscription = null;
+  public error$ : Observable<any> ;
 
   constructor(
     private authService: AuthService,
@@ -18,6 +19,8 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
     private router:Router
   ) { 
     this.createForm()
+    this.error$ = this.authService.error$
+
   }
 
   ngOnInit(): void {
@@ -38,7 +41,8 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
 
   onSubmit(){
     this.subscription = this.authService.register(this.form.value).subscribe(
-      res=> this.router.navigate(['/'])
+      res=> this.router.navigate(['/']),
+
     )
   }
   ngOnDestroy(){
