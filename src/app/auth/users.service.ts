@@ -83,6 +83,8 @@ export class UsersService {
     )
   }
 
+  
+
 
   getUser(id):Observable<Response>{
     return this.http.get<Response>(`${environment.API}users/${id}`)

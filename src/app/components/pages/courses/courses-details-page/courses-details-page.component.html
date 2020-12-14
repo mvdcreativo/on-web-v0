@@ -108,7 +108,7 @@
                                     </div>
 
                                     <div class="author-profile-raque-profile">
-                                        <a routerLink="/" class="d-inline-block">Ver perfil</a>
+                                        <a [routerLink]="['/docentes', course.user_instructor.slug]" class="d-inline-block">Ver perfil</a>
                                     </div>
                                 </div>
                             </div>
@@ -270,7 +270,7 @@
                     <ul>
                         <li>
                             <span><i class='bx bx-group'></i> Cupos:</span>
-                            {{ course.cupos }}
+                            {{ course.cupos_confirmed }}/{{ course.cupos }}
                         </li>
                         <li>
                             <span><i class='bx bx-time'></i> Duración:</span>

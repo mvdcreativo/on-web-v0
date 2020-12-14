@@ -1,0 +1,100 @@
+<app-header></app-header>
+
+<section class="instructor-details-area pt-100 pb-70">
+    <div class="container">
+        <ng-container *ngIf="instructor|async as instructor; else loading">
+        
+            <div class="instructor-details-desc">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4">
+                        <div class="instructor-details-sidebar">
+                            <img [src]="instructor.account.image" alt="image">
+    
+                            <!-- <div class="instructor-details-meta">
+                                <ul>
+                                    <li>
+                                        <i class='bx bxs-group'></i>
+                                        <span>Follower</span>
+                                        <a routerLink="/">102</a>
+                                    </li>
+                                    <li>
+                                        <i class='bx bx-group'></i>
+                                        <span>Following</span>
+                                        <a routerLink="/">81</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a routerLink="/contact" class="default-btn"><i class='bx bx-plus-circle icon-arrow before'></i><span class="label">Follow</span><i class="bx bx-plus-circle icon-arrow after"></i></a>
+                            <ul class="social-link">
+                                <li><a href="#" class="d-block facebook" target="_blank"><i class='bx bxl-facebook'></i></a></li>
+                                <li><a href="#" class="d-block twitter" target="_blank"><i class='bx bxl-twitter'></i></a></li>
+                                <li><a href="#" class="d-block instagram" target="_blank"><i class='bx bxl-instagram'></i></a></li>
+                                <li><a href="#" class="d-block linkedin" target="_blank"><i class='bx bxl-linkedin'></i></a></li>
+                                <li><a href="#" class="d-block pinterest" target="_blank"><i class='bx bxl-pinterest-alt'></i></a></li>
+                            </ul>-->
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-8 col-md-8">
+                        <div class="instructor-details">
+                            <h3>{{ instructor.name }} {{ instructor.last_name }}</h3>
+                            <span class="sub-title">{{ instructor.account.certificated }}</span>
+                            <div [innerHTML]="instructor.account.bio"></div>
+                            <div class="instructor-details-info">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-12">
+                                        <!-- <h3>My Education</h3>
+                                        <ul>
+                                            <li>
+                                                <i class='bx bxs-graduation'></i>
+                                                <span>Harvard University</span>
+                                                Bachelor in Mathematics
+                                            </li>
+                                            <li>
+                                                <i class='bx bxs-graduation'></i>
+                                                <span>University of Toronto</span>
+                                                Bachelor in English
+                                            </li>
+                                        </ul> -->
+                                    </div>
+    
+                                    <div class="col-lg-6 col-md-12">
+                                        <!-- <h3>My Experience</h3>
+                                        <ul>
+                                            <li>
+                                                <i class='bx bx-briefcase'></i>
+                                                <span>Envato</span>
+                                                2000-2010
+                                            </li>
+                                            <li>
+                                                <i class='bx bx-briefcase'></i>
+                                                <span>EnvyTheme</span>
+                                                2010-2020
+                                            </li>
+                                        </ul> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title text-left">
+                <h2>Cursos dictados por {{ instructor.name }}</h2>
+            </div>
+            <div class="row">
+                
+                <app-course-item-card class="col-lg-4 col-md-6" *ngFor="let course of courses|async"  [course]="course"></app-course-item-card>
+                
+            </div>
+        </ng-container>
+    </div>
+</section>
+
+<ng-template #loading>
+    <div class="div-content">
+        <div class="loading"><div></div><div></div><div></div></div>
+
+    </div>
+</ng-template>

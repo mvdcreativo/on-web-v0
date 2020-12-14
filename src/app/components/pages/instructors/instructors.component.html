@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<section class="instructor-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let item of instructors|async" class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-instructor-box mb-30">
+                    <div class="image" 
+                    [ngStyle]="{'border-color': item.courses_instructor[0]?.categories[0]?.color}"
+                    >
+                        <img [src]="item.account.image" alt="image">
+                        <ul class="social">
+                            <!-- <li><a href="#" target="_blank"><i class="bx bxl-facebook"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="bx bxl-twitter"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="bx bxl-linkedin"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="bx bxl-instagram"></i></a></li> -->
+                        </ul>
+                    </div>
+
+                    <div class="content">
+                        <h3><a [routerLink]="[item.slug]">{{ item.name }} {{ item.last_name }}</a></h3>
+                        <span>{{ item.account.certificated }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="particles-js-circle-bubble-3"></div>
+</section>
+
+<!-- <app-become-instructor-partner></app-become-instructor-partner> -->

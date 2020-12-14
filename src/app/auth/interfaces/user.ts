@@ -30,6 +30,7 @@ export interface User {
     slug: string;
     email: string;
     email_verified_at: Date;
+    social_id?: string;
     account?: Account;
     created_at: Date;
     updated_at: Date;

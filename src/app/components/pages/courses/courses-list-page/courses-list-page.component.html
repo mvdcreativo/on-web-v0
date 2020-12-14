@@ -51,22 +51,37 @@
             </div>
         </div>
 
-        <div class="row" >
-            <div class="col-lg-8 col-md-12" >
-                <div class="row flow" *ngIf="courses$ | async as courses; else loading">
-                    <app-course-item class="col-lg-12 col-md-12" *ngFor="let course of courses" [course]="course"></app-course-item>
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="row flow " *ngIf="courses$ | async as courses; else skeleton_course">
+                    <app-course-item class="col-lg-12 col-md-12" *ngFor="let course of courses" [course]="course">
+                    </app-course-item>
 
                 </div>
+
+                <ng-template #skeleton_course>
+                    <div class="row flow content-skeleton">
+                        <div *ngFor="let item of [1,1,1,1,1,1]" class="skeleton-course col-lg-12 col-md-12">
+                            <div class="box-item">
+                        
+                            </div>
+                        </div>
+                    </div>
+
+                </ng-template>
+
             </div>
 
             <div class="col-lg-4 col-md-12">
                 <aside class="widget-area">
-                    <section class="widget widget_categories" >
+                    <section class="widget widget_categories">
                         <h3 class="widget-title">Categorias</h3>
 
-                        <ul  *ngIf="categories$ | async as categories;else loading">
+                        <ul *ngIf="categories$ | async as categories;else loading">
                             <li *ngFor="let category of categories">
-                                <a [routerLink]="['/cursos', category.slug]" routerLinkActive="activate-router">{{ category.name }} <span class="post-count">({{ category.courses.length }})</span></a>
+                                <a [routerLink]="['/cursos', category.slug]"
+                                    routerLinkActive="activate-router">{{ category.name }} <span
+                                        class="post-count">({{ category.courses.length }})</span></a>
                             </li>
                         </ul>
                     </section>
@@ -76,11 +91,14 @@
 
                         <article class="item" *ngFor="let cDestac of coursesDestac$ | async | slice : 0:3">
                             <a [routerLink]="['/cursos/curso', cDestac.slug ]" class="thumb">
-                                <span [ngStyle]="{'background-image': 'url(' + cDestac.image + ')'}" class="fullimage cover " role="img"></span>
+                                <span [ngStyle]="{'background-image': 'url(' + cDestac.image + ')'}"
+                                    class="fullimage cover " role="img"></span>
                             </a>
                             <div class="info">
                                 <span>Inicia {{ cDestac.date_ini | date: 'dd-MM-yyyy' }}</span>
-                                <h4 class="title usmall"><a [routerLink]="['/cursos/curso', cDestac.slug]">{{ cDestac.title | slice : 0:35 }}...</a></h4>
+                                <h4 class="title usmall"><a
+                                        [routerLink]="['/cursos/curso', cDestac.slug]">{{ cDestac.title | slice : 0:35 }}...</a>
+                                </h4>
                             </div>
 
                             <div class="clear"></div>
@@ -133,7 +151,11 @@
 
 <ng-template #loading>
     <div class="div-content">
-        <div class="loading"><div></div><div></div><div></div></div>
+        <div class="loading">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
 
     </div>
 </ng-template>

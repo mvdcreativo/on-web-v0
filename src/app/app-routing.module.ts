@@ -33,6 +33,7 @@ import { ErrorPageComponent } from './components/pages/error-page/error-page.com
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { ContactPageComponent } from './components/pages/contact-page/contact-page.component';
 import { AuthGuard } from './auth/guards/auth.guard';
+import { InstructorsPageTwoComponent } from './components/pages/instructors-page-two/instructors-page-two.component';
 // import { CategoryPageOneComponent } from './components/pages/category-page-one/category-page-one.component';
 // import { CategoryPageTwoComponent } from './components/pages/category-page-two/category-page-two.component';
 // import { CategoryPageThreeComponent } from './components/pages/category-page-three/category-page-three.component';
@@ -102,7 +103,7 @@ const routes: Routes = [
     // {path: 'shop-grid-fullwidth', component: ShopFullWidthPageComponent},
     // {path: 'single-products', component: ProductsDetailsPageComponent},
     // {path: 'cart', component: CartPageComponent},
-    {path: 'checkout', component: CheckoutPageComponent},
+    {path: 'contact', component: ContactPageComponent},
     {path: 'contact', component: ContactPageComponent},
 
     { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule) },
@@ -123,6 +124,10 @@ const routes: Routes = [
     { 
       path: 'carrito', 
       loadChildren: ()=> import('./components/pages/cart-page/cart-page.module').then(m => m.CartPageModule),
+    },
+    { 
+      path: 'docentes', 
+      loadChildren: () => import('./components/pages/instructors/instructors.module').then(m => m.InstructorsModule) 
     },
     { path: 'pagina-no-encontrada', component: ErrorPageComponent },
     { path: '**', redirectTo: '/pagina-no-encontrada', pathMatch: 'full' }

@@ -20,6 +20,7 @@ import { DataTableComponent } from './components/data-table/data-table.component
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { DynamicPipePipe } from './pipes/dynamic-pipe.pipe';
 import { DinamicFormComponent } from './components/dinamic-form/dinamic-form.component';
+import { CourseItemCardComponent } from './components/course-item-card/course-item-card.component';
 
 
 
@@ -36,7 +37,8 @@ import { DinamicFormComponent } from './components/dinamic-form/dinamic-form.com
     PaymentFormComponent,
     CartComponent,
     DynamicPipePipe,
-    DinamicFormComponent
+    DinamicFormComponent,
+    CourseItemCardComponent
     
   ],
   imports: [
@@ -68,7 +70,8 @@ import { DinamicFormComponent } from './components/dinamic-form/dinamic-form.com
     DataTableComponent,
     MatMomentDateModule,
     DynamicPipePipe,
-    DinamicFormComponent
+    DinamicFormComponent,
+    CourseItemCardComponent
   ],
   providers: [
     DatePipe
