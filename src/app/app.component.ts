@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
                 filter(event => event instanceof NavigationEnd || event instanceof NavigationCancel)
             )
             .subscribe(event => {
-                // $.getScript('../assets/js/main.js');
+                $.getScript('../assets/js/main.js');
                 $('.preloader').fadeOut('slow');
                 this.location = this.router.url;
                 if (!(event instanceof NavigationEnd)) {

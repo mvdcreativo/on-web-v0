@@ -1,7 +1,7 @@
-import { Component, OnInit, ɵɵcomponentHostSyntheticListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CoursesService } from 'src/app/services/courses.service';
 import { Observable, Subscription } from 'rxjs';
-import { ResponseCourse, ResponseCourses, CourseSection, Course, Category, ResponsePaginate } from 'src/app/interfaces/course';
+import { Course, Category, ResponsePaginate } from 'src/app/interfaces/course';
 import { map, filter } from 'rxjs/operators';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { ActivatedRoute, Params } from '@angular/router';

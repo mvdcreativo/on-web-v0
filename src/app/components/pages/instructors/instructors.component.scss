@@ -1,6 +1,9 @@
 .instructor-area{
     margin-top: 100px;
-    min-height: 100vh;
+    position: relative;
+    display: block;
+    min-height: 200%;
+    height: auto;
 }
 
 // .col-lg-4 {
