@@ -13,7 +13,7 @@ export class CategoriesStyleOneComponent implements OnInit {
   @Input()categories : Category[] = []
 
   config: SwiperConfigInterface = {
-    a11y: true,
+  
     direction: 'horizontal',
     // loop: true,
     slidesPerView: 1.3,
