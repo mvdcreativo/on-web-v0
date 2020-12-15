@@ -103,8 +103,7 @@ const routes: Routes = [
     // {path: 'shop-grid-fullwidth', component: ShopFullWidthPageComponent},
     // {path: 'single-products', component: ProductsDetailsPageComponent},
     // {path: 'cart', component: CartPageComponent},
-    {path: 'contact', component: ContactPageComponent},
-    {path: 'contact', component: ContactPageComponent},
+    {path: 'contacto', component: ContactPageComponent},
 
     { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule) },
     { path: 'nosotros', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule) },
