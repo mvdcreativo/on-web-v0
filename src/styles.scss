@@ -1252,19 +1252,14 @@ textarea.form-control {
                     repeat: no-repeat;
                 };
                 &.bg1 {
-                    background-image: url(assets/img/slideshow/slideshow1.jpg);
                 }
                 &.bg2 {
-                    background-image: url(assets/img/slideshow/slideshow2.jpg);
                 }
                 &.bg3 {
-                    background-image: url(assets/img/slideshow/slideshow3.jpg);
                 }
                 &.bg4 {
-                    background-image: url(assets/img/slideshow/slideshow4.jpg);
                 }
                 &.bg5 {
-                    background-image: url(assets/img/slideshow/slideshow5.jpg);
                 }
             }
         }
@@ -1634,24 +1629,16 @@ textarea.form-control {
         };
     }
     &.item-bg1 {
-        background: {
-            image: url(assets/img/page-title/page-title1.jpg);
-        };
+
     }
     &.item-bg2 {
-        background: {
-            image: url(assets/img/page-title/page-title2.jpg);
-        };
+
     }
     &.item-bg3 {
-        background: {
-            image: url(assets/img/page-title/page-title3.jpg);
-        };
+
     }
     &.item-bg4 {
-        background: {
-            image: url(assets/img/page-title/page-title4.jpg);
-        };
+
     }
 }
 .page-title-content {
@@ -1843,15 +1830,6 @@ textarea.form-control {
                         size: cover !important;
                         repeat: no-repeat;
                         position: center center !important;
-                    }
-                    &.bg1 {
-                        background-image: url(assets/img/blog/blog7.jpg);
-                    }
-                    &.bg2 {
-                        background-image: url(assets/img/blog/blog8.jpg);
-                    }
-                    &.bg3 {
-                        background-image: url(assets/img/blog/blog9.jpg);
                     }
                 }
                 &::before, &::after {

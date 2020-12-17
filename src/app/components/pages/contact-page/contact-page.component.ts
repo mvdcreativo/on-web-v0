@@ -15,7 +15,7 @@ export class ContactPageComponent implements OnInit {
       name: [null, Validators.required],
       email: [null, Validators.required],
       phone: [null, Validators.required],
-      subject: [null, Validators.required],
+      // subject: [null, Validators.required],
       message: [null, Validators.required],
     })
   }
@@ -24,4 +24,7 @@ export class ContactPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(){
+    
+  }
 }

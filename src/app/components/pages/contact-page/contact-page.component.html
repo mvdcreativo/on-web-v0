@@ -67,14 +67,7 @@
                                 placeholder="Tu nombre">
                         </div>
                     </div>
-
-                    <div class="col-lg-6 col-md-12">
-                        <div class="form-group">
-                            <input formControlName="email" type="email" id="email" class="form-control"
-                                placeholder="Tu Email">
-                        </div>
-                    </div>
-
+                    
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group">
                             <input formControlName="phone" type="text" id="phone_number" class="form-control"
@@ -82,12 +75,13 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6 col-md-12">
+                    <div class="col-lg-12 col-md-12">
                         <div class="form-group">
-                            <input formControlName="subject" type="text" id="msg_subject" class="form-control"
-                                placeholder="El tema de tu consulta">
+                            <input formControlName="email" type="email" id="email" class="form-control"
+                                placeholder="Tu Email">
                         </div>
                     </div>
+
 
                     <div class="col-lg-12 col-md-12">
                         <div class="form-group">
@@ -97,9 +91,11 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12">
-                        <button type="submit" class="default-btn"><i
-                                class='bx bx-paper-plane icon-arrow before'></i><span class="label">Enviar</span><i
-                                class="bx bx-paper-plane icon-arrow after"></i></button>
+                        <button type="submit" class="default-btn" [disabled]="!formContact.valid">
+                            <i class='bx bx-paper-plane icon-arrow before'></i>
+                            <span class="label">Enviar</span>
+                            <i class="bx bx-paper-plane icon-arrow after"></i>
+                        </button>
                     </div>
                 </div>
             </form>

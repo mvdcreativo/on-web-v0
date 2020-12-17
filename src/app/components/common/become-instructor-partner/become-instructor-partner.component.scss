@@ -23,7 +23,6 @@
     z-index: 1;
     padding: 100px;
     background: {
-        image: url(../../../../assets/img/pattern.png);
         position: center center;
         size: contain;
         repeat: repeat;
@@ -97,10 +96,8 @@
         repeat: no-repeat;
     };
     &.bg-image1 {
-        background-image: url(../../../../assets/img/become-instructor.jpg);
     }
     &.bg-image2 {
-        background-image: url(../../../../assets/img/become-partner.jpg);
     }
     img {
         display: none;
