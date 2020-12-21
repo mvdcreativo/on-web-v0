@@ -269,8 +269,8 @@
                 <div class="courses-sidebar-information">
                     <ul>
                         <li>
-                            <span><i class='bx bx-group'></i> Cupos:</span>
-                            {{ course.cupos_confirmed }}/{{ course.cupos }}
+                            <span><i class='bx bx-group'></i> Cupos disponibles:</span>
+                            {{ course.cupos - course.cupos_confirmed }}/{{ course.cupos }}
                         </li>
                         <li>
                             <span><i class='bx bx-time'></i> Duración:</span>
@@ -326,7 +326,7 @@
                                 <li *ngFor="let lesson of section.lessons; let i=index">
                                     <a routerLink="/single-courses">
                                         <span class="number">{{ i+1 }}.</span> 
-                                        {{ lesson.name }}. ({{ lesson.duration }})
+                                        {{ lesson.name }}.
                                         <!-- <span class="free-lesson">Free</span> -->
                                     </a>
                                     
