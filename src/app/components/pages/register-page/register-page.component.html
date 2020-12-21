@@ -24,25 +24,41 @@
                             </div>
                             <h3>Créate una cuenta AHORA!</h3>
                             <p>Ya tienes una cuenta? <a routerLink="/login">Entrar</a></p>
-                            <form [formGroup]="form">
+                            <form [formGroup]="form" *ngIf="form">
                                 <span class="error-message">{{ error$ | async }}</span>
                                 <div class="row">
-                                    <div class="form-group col-lg-6 col-md-12">
-                                        <input type="text" formControlName="name" placeholder="*Nombre" class="form-control" autocomplete="off">
-                                    </div>
-                                    <div class="form-group col-lg-6 col-md-12">
-                                        <input type="text" formControlName="last_name" placeholder="*Apellido" class="form-control" autocomplete="off">
-                                    </div>
+                                    
+                                    <mat-form-field appearance="none" class="form-group col-lg-6 col-md-12" >
+                                        <input matInput type="text" formControlName="name" placeholder="*Nombre" class="form-control" autocomplete="offf">
+                                        <mat-error *ngIf="form.get('name').errors?.required">{{getErrorMessage('required')}}</mat-error>
+                                    </mat-form-field>
+                                    
+                                    <mat-form-field appearance="none"  class="form-group col-lg-6 col-md-12">
+                                        <input matInput type="text" formControlName="last_name" placeholder="*Apellido" class="form-control" autocomplete="offf">
+                                        <mat-error *ngIf="form.get('last_name').errors?.required">{{getErrorMessage('required')}}</mat-error>
+                                    </mat-form-field>
 
                                 </div>
-                                <div class="form-group">
-                                    <input type="email" formControlName="email" placeholder="*Tu E-mail" class="form-control" autocomplete="off">
+                                <div class="row">
+                                    <mat-form-field appearance="none" class="form-group col-lg-12 col-md-12">
+                                        <input matInput type="email" formControlName="email" placeholder="*Tu E-mail" class="form-control" autocomplete="offf">
+                                        <mat-error *ngIf="form.get('email').errors?.required">{{getErrorMessage('required')}}</mat-error>
+                                        <mat-error *ngIf="form.get('email').errors?.email">{{getErrorMessage('email')}}</mat-error>
+                                        <mat-error *ngIf="form.get('email').errors?.notIncludedIn">{{getErrorMessage('notIncludedIn')}}</mat-error>
+                                    </mat-form-field>
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" formControlName="password" placeholder="*Escribe una contraseña" class="form-control" autocomplete="off">
+                                <div class="row">
+                                    <mat-form-field appearance="none" class="form-group col-lg-12 col-md-12">
+                                        <input matInput type="password" formControlName="password" placeholder="*Escribe una contraseña" class="form-control" autocomplete="off">
+                                        <mat-error *ngIf="form.get('password').errors?.required">{{getErrorMessage('required')}}</mat-error>
+                                    </mat-form-field>
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" formControlName="password_confirmation" placeholder="*Vuelve a escribir tu contraseña" class="form-control" autocomplete="off">
+                                <div class="row">
+                                    <mat-form-field appearance="none" class="form-group col-lg-12 col-md-12">
+                                        <input matInput type="password" formControlName="password_confirmation" placeholder="*Vuelve a escribir tu contraseña" class="form-control" autocomplete="offf">
+                                        <mat-error *ngIf="form.get('password_confirmation').errors?.required">{{getErrorMessage('required')}}</mat-error>
+                                        <mat-error *ngIf="form.get('password_confirmation').errors?.equalTo">{{getErrorMessage('equalTo')}}</mat-error>
+                                    </mat-form-field>
                                 </div>
                                 <button (click)="onSubmit()" [disabled]="!form.valid" type="submit">Registrar</button>
                                 <!-- <div class="connect-with-social">

@@ -1,8 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CustomValidators } from 'ngx-custom-validators';
 import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
+import { UsersService } from 'src/app/auth/users.service';
 
 @Component({
   selector: 'app-register-page',
@@ -12,13 +15,16 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class RegisterPageComponent implements OnInit, OnDestroy {
   subscription: Subscription = null;
   public error$ : Observable<any> ;
+  emailsExists: any[] = [];
 
   constructor(
     private authService: AuthService,
     private fb:FormBuilder,
-    private router:Router
+    private router:Router,
+    private userService: UsersService
   ) { 
-    this.createForm()
+    this.emailExistValidation()
+    
     this.error$ = this.authService.error$
 
   }
@@ -30,11 +36,11 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
   form: FormGroup
   createForm(){
     this.form = this.fb.group({
-      name:[null, Validators.required],
-      last_name:[null, Validators.required],
-      email:[null, [Validators.required, Validators.email]],
-      password:[null, Validators.required],
-      password_confirmation: [null, Validators.required]
+      name:["", Validators.required],
+      last_name:["", Validators.required],
+      email:["", [Validators.required, CustomValidators.email, CustomValidators.notIncludedIn(this.emailsExists)]],
+      password:["", Validators.required],
+      password_confirmation: ["", [Validators.required]]
     })
   }
 
@@ -50,5 +56,58 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
       
       this.subscription.unsubscribe()
     }
+  }
+
+
+  emailExistValidation():void{
+    
+    this.userService.getUsers(1,10000).pipe(map(v=>v.data.data.map(x=> x.email))).subscribe(res=>{
+
+        this.emailsExists = res
+
+      this.createForm()
+      if(this.form){
+        this.form.get('password_confirmation').setValidators([CustomValidators.equalTo(this.form.get('password'))])
+      }
+      console.log(this.emailsExists);
+      
+    } )
+    
+  }
+
+  getErrorMessage(validator){
+    let message
+    switch (validator) {
+      case 'notIncludedIn':{
+        message = "El email ya existe"
+        break;
+      }
+      case 'email':{
+        message = "Email no válido"
+        break;
+      }      
+      case 'date':{
+        message = "Formato de fecha inválido"
+        break;
+      }      
+      case 'number':{
+        message = "Solo números"
+        break;
+      }      
+      case 'required':{
+        message = "Campo requerido"
+        break;
+      }  
+
+      case 'equalTo':{
+        message = "Las contraseñas no son iguales "
+        break;
+      }      
+      default:
+        message = "No válido"
+        break;
+    }
+
+    return message
   }
 }

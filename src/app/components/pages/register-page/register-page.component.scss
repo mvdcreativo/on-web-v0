@@ -54,6 +54,7 @@
                 transition: var(--transition);
                 box-shadow: 0px 5px 28.5px 1.5px rgba(149, 152, 200, .2) !important;
                 height: 55px;
+                padding: 0 10px;
                 font: {
                     size: var(--fontSize);
                 };
@@ -155,6 +156,11 @@
             }
         }
     }
+}
+
+.mat-form-field-infix{
+    padding: 0!important;
+    border-top:none!important;
 }
 
 @media only screen and (max-width: 767px) {
