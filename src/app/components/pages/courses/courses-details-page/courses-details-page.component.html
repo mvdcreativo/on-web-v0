@@ -324,11 +324,11 @@
                         <div class="courses-list">
                             <ul>
                                 <li *ngFor="let lesson of section.lessons; let i=index">
-                                    <a routerLink="/single-courses">
+                                    
                                         <span class="number">{{ i+1 }}.</span> 
                                         {{ lesson.name }}.
                                         <!-- <span class="free-lesson">Free</span> -->
-                                    </a>
+                                    
                                     
                                 </li>
                             </ul>
@@ -342,7 +342,7 @@
                     <p>Brindamos capacitaciones en nuestro centro, o a domicilio en su empresa.</p>
 
                     <!-- <a routerLink="/single-courses" class="d-inline-block">Purchase now</a> -->
-                    <a routerLink="/" class="d-inline-block">Solicitar Información</a>
+                    <a routerLink="/contacto" class="d-inline-block">Solicitar Información</a>
                 </div>
             </div>
         </div>

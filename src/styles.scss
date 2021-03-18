@@ -3707,9 +3707,12 @@ blockquote, .blockquote {
 ////////////////////////////// MATERIAL
 html, body { height: 100%; }
 body { margin: 0;}
-.mat-form-field-infix{
-    padding: 0!important;
-    border-top:none!important;
+.form-group{
+
+    .mat-form-field-infix{
+        padding: 0!important;
+        border-top:none!important;
+    }
 }
 
 

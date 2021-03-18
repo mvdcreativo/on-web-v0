@@ -5,8 +5,11 @@
 export const environment = {
   production: false,
 
-  API: "http://on_api_v1.test/api/",
-  AuthAPI: 'http://on_api_v1.test/api/auth/'
+  // API: "http://on_api_v1.test/api/",
+  // AuthAPI: 'http://on_api_v1.test/api/auth/'
+
+  API: "https://api.oncapacitaciones.com/api/",
+  AuthAPI: 'https://api.oncapacitaciones.com/api/auth/'
 };
 
 /*

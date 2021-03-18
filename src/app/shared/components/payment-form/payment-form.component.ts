@@ -22,13 +22,13 @@ export class PaymentFormComponent implements OnInit, OnDestroy {
 
   ) { 
     
+    this.createForm()
     
   }
 
   ngOnInit(): void {
     if (this.user) {
-      
-      this.createForm()
+      this.updateForm()
     }
   }
 
@@ -36,16 +36,29 @@ export class PaymentFormComponent implements OnInit, OnDestroy {
     console.log(this.user);
     
     this.form = this.fb.group({
-      name: [this.user?.name, Validators.required],
-      last_name: [this.user?.last_name, Validators.required],
-      email: [this.user?.email, [Validators.required, Validators.email]],
-      n_doc_iden: [this.user?.account?.n_doc_iden, Validators.required],
+      name: ["", Validators.required],
+      last_name: ["", Validators.required],
+      email: ["", [Validators.required, Validators.email]],
+      n_doc_iden: ["", Validators.required],
       type_doc_iden: ['CI', Validators.required],
-      address_one: [this.user?.account?.address_one, Validators.required],
-      phone_one: [this.user?.account?.phone_one, Validators.required],
+      address_one: ["", Validators.required],
+      phone_one: ["", Validators.required],
     })
-    this.emitChanges() 
+    this.emitChanges()
 
+  }
+
+
+  updateForm(){
+    this.form.setValue({
+      name: this.user?.name,
+      last_name: this.user?.last_name,
+      email: this.user?.email,
+      n_doc_iden: this.user?.account?.n_doc_iden,
+      type_doc_iden: 'CI',
+      address_one: this.user?.account?.address_one,
+      phone_one: this.user?.account?.phone_one,
+    })
   }
 
   ngOnDestroy() {

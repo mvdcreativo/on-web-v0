@@ -22,10 +22,10 @@
 
                     <ul class="social-link">
                         <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-facebook'></i></a></li>
-                        <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-twitter'></i></a></li>
+                        <!-- <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-twitter'></i></a></li> -->
                         <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-instagram'></i></a></li>
-                        <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-linkedin'></i></a></li>
-                        <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-pinterest-alt'></i></a></li>
+                        <!-- <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-linkedin'></i></a></li>
+                        <li><a href="#" class="d-block" target="_blank"><i class='bx bxl-pinterest-alt'></i></a></li> -->
                     </ul>
                 </div>
             </div>
@@ -62,12 +62,13 @@
                 <div class="single-footer-widget mb-30">
                     <h3>Novedades</h3>
 
-                    <div class="newsletter-box">
+                    <div *ngIf="form" class="newsletter-box">
                         <p>Dejanos tu correo para que podamos enviarte novedades</p>
-                        <form class="newsletter-form" [formGroup]="formFooter">
+                        <form class="newsletter-form" [formGroup]="form">
                             <label>Tu dirección de correo electrónico:</label>
-                            <input formControlName="email" type="email" class="input-newsletter" placeholder="Correo electrónico" name="EMAIL">
-                            <button type="submit">Suscribirme</button>
+                            <input formControlName="email" type="email" class="input-newsletter" placeholder="Correo electrónico">
+                            <button [disabled]="!form.valid" (click)="onSubmit()">Suscribirme</button>
+                            <label>{{ send | async }} </label>
                         </form>
                     </div>
                 </div>
@@ -88,7 +89,7 @@
                     </svg>
                 </a>
             </div>
-            <p><i class='bx bx-copyright'></i>2020 <a routerLink="/" target="_blank">On Capacitaciones</a> | Todo los derechos reservados. - Designed By <a href="https://picaportedesign.com" target="_blank">Picaporte Design</a></p>
+            <p><i class='bx bx-copyright'></i>{{ yearCopyright }} <a routerLink="/" target="_blank">On Capacitaciones</a> | Todo los derechos reservados. - Designed By <a href="https://picaportedesign.com" target="_blank">Picaporte Design</a></p>
         </div>
     </div>
 </footer>

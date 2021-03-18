@@ -5,7 +5,8 @@
 
         <mat-form-field [class]="field.class" appearance="outline">
             <mat-label>{{ field.label }}</mat-label>
-            <input [formControlName]="field.nameControl" matInput [placeholder]="field.label" [type]="field.type" autocomplete="off" >
+            <input *ngIf="field.nameControl != 'email'" [formControlName]="field.nameControl" matInput [placeholder]="field.label" [type]="field.type" autocomplete="off" >
+            <input *ngIf="field.nameControl == 'email'" [formControlName]="field.nameControl" matInput [placeholder]="field.label" [type]="field.type" autocomplete="off" readonly >
         </mat-form-field>
 
     </ng-container>

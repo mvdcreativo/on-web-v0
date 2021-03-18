@@ -94,21 +94,21 @@
                     background-color: rgb(202, 202, 202);
                 }
             }
-            .forgot-password {
-                text-align: right;
-                margin-top: 20px;
+            
+        }
+        .forgot-password {
+            text-align: right;
+            margin-top: 20px;
 
-                a {
-                    display: inline-block;
-                    color: var(--mainColor);
-                    text-decoration: underline;
-
-                    &:hover {
-                        color: var(--optionalColor);
-                    }
+            a {
+                display: inline-block;
+                color: var(--mainColor);
+                text-decoration: underline;
+                cursor: pointer;
+                &:hover {
+                    color: var(--optionalColor);
                 }
             }
-            
         }
         .connect-with-social {
             margin-top: 20px;

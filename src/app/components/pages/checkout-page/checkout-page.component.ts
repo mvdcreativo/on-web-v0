@@ -60,12 +60,13 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
       this.cartService.countItems$.subscribe(res => {
         this.countItemsCart = res
         if (this.form?.valid && this.countItemsCart >=1 ) {
-          this.formValid = this.form.valid
+          this.formValid = true
         }else{
           this.formValid = false;
         }
       } )
     )
+    console.log(this.form?.valid);
     
   }
   
