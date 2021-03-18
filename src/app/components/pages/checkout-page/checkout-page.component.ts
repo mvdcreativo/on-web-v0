@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
-import { count, first, map, take } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { User } from 'src/app/auth/interfaces/user';
-import { Course } from 'src/app/interfaces/course';
 import { CartItem } from '../cart-page/interfaces/cart-item';
 import { CartService } from '../cart-page/services/cart.service';
 
