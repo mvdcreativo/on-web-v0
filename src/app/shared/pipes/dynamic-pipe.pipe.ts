@@ -13,7 +13,7 @@ export class DynamicPipePipe implements PipeTransform {
       return value;
     }else{
 
-      let date = new Date(parseInt(value.substr(6)));
+      let date = new Date();
       // let date = moment(value)
       return this.datePipe.transform(date, format);
 
