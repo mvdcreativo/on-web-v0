@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { SeoService } from 'src/app/shared/seo/services/seo.service';
 import { ContactService } from './contact.service';
+declare let fbq: Function;//facebook pixel
 
 @Component({
   selector: 'app-contact-page',
@@ -14,9 +16,10 @@ export class ContactPageComponent implements OnInit {
 
   constructor(
     private fb:FormBuilder,
-    private contactService: ContactService
-
+    private contactService: ContactService,
+    private seoService:SeoService
   ) { 
+    this.setSeo()
     this.formContact= this.fb.group({
       name: [null, Validators.required],
       email: [null, Validators.required],
@@ -34,6 +37,7 @@ export class ContactPageComponent implements OnInit {
     this.message = this.contactService.sendMailContact(this.formContact.value).pipe(map(v =>{
       this.formContact.reset()
       if( v === 'success') {
+        fbq('track', 'Contact');
         return "Gracias!!!. Nos comunicaremos contigo dentro de las próximas 24hs."
       }else{
 
@@ -41,5 +45,18 @@ export class ContactPageComponent implements OnInit {
       }
     })
     )
+  }
+
+  setSeo() {
+    //////seo/////  
+
+    this.seoService.genrateTags({
+
+      title: `Contacto`,
+      description: `E-mail: cursos@oncapacitaciones.com. Nuestra Ubicación: Av. Giannattasio Km 18.200 M.G S.102 entre Siena y Padua. Llamanos: (+598) 2681 8368. Es muy simple llegar desde donde estés.`,
+      slug: `/contacto`,
+
+    })
+    ////////////
   }
 }

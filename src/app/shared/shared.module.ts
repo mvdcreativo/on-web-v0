@@ -9,7 +9,6 @@ import { FunfactsComponent } from './components/funfacts/funfacts.component';
 import { CategoriesStyleOneComponent } from './components/categories-style-one/categories-style-one.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CoursesDestacComponent } from './components/courses-destac/courses-destac.component';
-import { TmNgOdometerModule } from 'tm-ng-odometer';
 import { MaterialModule } from './material/material.module';
 import { AuthModule } from '../auth/auth.module';
 import { UserActionsComponent } from './components/header/user-actions/user-actions.component';
@@ -47,7 +46,6 @@ import { CourseItemCardComponent } from './components/course-item-card/course-it
     SwiperModule,
     ReactiveFormsModule,
     // FormsModule,
-    TmNgOdometerModule,
     MaterialModule,
     MatMomentDateModule,
     
@@ -62,7 +60,6 @@ import { CourseItemCardComponent } from './components/course-item-card/course-it
     CategoriesStyleOneComponent,
     HeaderComponent,
     CoursesDestacComponent,
-    TmNgOdometerModule,
     MaterialModule,
     CourseItemComponent,
     PaymentFormComponent,

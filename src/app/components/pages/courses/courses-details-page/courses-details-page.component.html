@@ -100,19 +100,19 @@
                         <div class="author-profile-header"></div>
                         <div class="author-profile">
                             <div class="author-profile-title">
-                                <img [src]="course.user_instructor.account.image" class="shadow-sm rounded-circle" alt="image">
+                                <img [src]="course?.user_instructor?.account?.image" class="shadow-sm rounded-circle" alt="image">
                                 <div class="author-profile-title-details d-flex justify-content-between">
                                     <div class="author-profile-details">
-                                        <h4>{{ course.user_instructor.name }}</h4>
-                                        <span class="d-block">{{ course.user_instructor.account.certificated }}</span>
+                                        <h4>{{ course?.user_instructor?.name }}</h4>
+                                        <span class="d-block">{{ course?.user_instructor?.account?.certificated }}</span>
                                     </div>
 
                                     <div class="author-profile-raque-profile">
-                                        <a [routerLink]="['/docentes', course.user_instructor.slug]" class="d-inline-block">Ver perfil</a>
+                                        <a [routerLink]="['/docentes', course?.user_instructor?.slug]" class="d-inline-block">Ver perfil</a>
                                     </div>
                                 </div>
                             </div>
-                            {{ course.user_instructor.account.bio }}
+                            {{ course?.user_instructor?.account?.bio }}
                         </div>
                     </div>
 

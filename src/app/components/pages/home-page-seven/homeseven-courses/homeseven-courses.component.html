@@ -22,8 +22,8 @@
 
                     <div class="courses-content">
                         <div class="course-author d-flex align-items-center">
-                            <img [src]="course.user_instructor.account.image" class="rounded-circle mr-2" alt="image">
-                            <span>{{ course.user_instructor.name }}</span>
+                            <img [src]="course?.user_instructor?.account?.image" class="rounded-circle mr-2" alt="image">
+                            <span>{{ course?.user_instructor?.name }}</span>
                         </div>
 
                         <h3><a [routerLink]="['/curso', course.slug ]" class="d-inline-block">{{ course.title }}</a></h3>

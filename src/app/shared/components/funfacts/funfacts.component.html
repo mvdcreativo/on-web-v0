@@ -5,7 +5,7 @@
                 <i class='bx bxs-group'></i>
             </div>
             <h3  class="odometer">
-                <tm-ng-odometer [number]="totalInstructors|async " [config]="{ }"></tm-ng-odometer>
+                <span>{{ totalInstructors|async }}</span>
             </h3>
             <!-- <h3  [attr.data-count]="'10'">00</h3> -->
             <p>Docentes</p>
@@ -18,7 +18,7 @@
                 <i class='bx bx-book-reader'></i>
             </div>
             <h3 class="odometer">
-                <tm-ng-odometer [number]="totalCourses|async " [config]="{ }"></tm-ng-odometer>
+                <span>{{ totalCourses|async }}</span>
             </h3>
             <p>Cursos</p>
         </div>

@@ -1,11 +1,13 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
 import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser, Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { StylesService } from './services/styles.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from './auth/auth.service';
 declare let $: any;
+declare let fbq: Function;//facebook pixel
+declare let gtag: Function;//facebook pixel
 
 @Component({
     selector: 'app-root',
@@ -24,17 +26,31 @@ export class AppComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private stylesServices : StylesService,
-        private elementRef : ElementRef,
+        private stylesServices: StylesService,
+        private elementRef: ElementRef,
         private sanitizer: DomSanitizer,
-        private authService: AuthService
-    ) 
-    {
-        this.authService.checkUser()
+        private authService: AuthService,
+        @Inject(PLATFORM_ID) private platformId: Object
+
+    ) {
+        this.authService.checkUser();
+        if (isPlatformBrowser(this.platformId)) {
+            //facebook pixel
+            router.events.subscribe((y: NavigationEnd) => {
+                if (y instanceof NavigationEnd) {
+                    fbq('track', 'PageView');
+    
+                    //   gtag('config', 'G-8VTYKQ2XSH', {
+                    //     'page_path' : y.urlAfterRedirects
+                    //   })
+                }
+            })
+            //////
+        }
     }
 
-    ngOnInit(){
-        
+    ngOnInit() {
+
         this.recallJsFuntions();
         this.stylesServices.mainColor$.subscribe(
             color => this.changeColor(color)
@@ -43,7 +59,7 @@ export class AppComponent implements OnInit {
 
     recallJsFuntions() {
         this.router.events.subscribe((event) => {
-            if ( event instanceof NavigationStart ) {
+            if (event instanceof NavigationStart) {
                 $('.preloader').fadeIn('slow');
             }
         });
@@ -67,9 +83,9 @@ export class AppComponent implements OnInit {
     }
 
 
-    private changeColor(color){
+    private changeColor(color) {
         const cambiaColor = this.elementRef.nativeElement.style.setProperty('--mainColor', color);
         this.sanitizer.bypassSecurityTrustStyle(cambiaColor);
-        
+
     }
 }

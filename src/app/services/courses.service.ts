@@ -68,7 +68,9 @@ export class CoursesService {
   }
 
   public getCourseBySlug(slug): Observable<Course> {
-    return this.http.get<ResponseCourse>(`${environment.API}course/${slug}`).pipe(map( res => res.data));
+    return this.http.get<ResponseCourse>(`${environment.API}course/${slug}`).pipe(map( res => {
+      return res.data
+    }));
     
   }
 
@@ -76,6 +78,6 @@ export class CoursesService {
     return this.http.get<ResponseCourses>(`${environment.API}courses-destac`).pipe(map( res => res.data));
     
   }
+  
+
 }
-
-

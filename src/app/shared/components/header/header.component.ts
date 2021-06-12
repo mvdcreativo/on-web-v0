@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+declare let fbq: Function;//facebook pixel
 
 @Component({
   selector: 'app-header',
@@ -27,6 +28,7 @@ export class HeaderComponent implements OnInit {
 
   onSubmitSearch(){
     const search = this.formSearch.get('search').value
+    fbq('track', 'Search');
     this.router.navigate(['cursos/buscar/cursos', search ])
   }
 }

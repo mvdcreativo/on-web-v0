@@ -8,6 +8,7 @@ import { first } from 'rxjs/operators';
 import { NewPassDilogComponent } from 'src/app/auth/access/new-pass-dilog/new-pass-dilog.component';
 import { ResetPassDielogComponent } from 'src/app/auth/access/reset-pass-dielog/reset-pass-dielog.component';
 import { AuthService } from 'src/app/auth/auth.service';
+import { SeoService } from 'src/app/shared/seo/services/seo.service';
 
 @Component({
   selector: 'app-login-page',
@@ -26,9 +27,11 @@ export class LoginPageComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private activateRoute: ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private seoService: SeoService
 
   ) {
+    this.setSeo();
     this.createForm()
     this.error$ = this.authService.error$
   }
@@ -165,6 +168,19 @@ export class LoginPageComponent implements OnInit {
       }
 
     });
+  }
+
+  setSeo() {
+    //////seo/////  
+
+    this.seoService.genrateTags({
+
+      title: `Acceder`,
+      description: `Bienvenidos!`,
+      slug: `/login`,
+
+    })
+    ////////////
   }
 
 }

@@ -8,6 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import * as moment from 'moment';
+declare let fbq: Function;//facebook pixel
+
 
 @Component({
   selector: 'app-footer',
@@ -41,6 +43,7 @@ export class FooterComponent implements OnInit {
     .pipe(
       map(v=> {
         if(v === 'success'){
+          fbq('track', 'Lead');
           this.form.reset()
           return "enviado"
         }

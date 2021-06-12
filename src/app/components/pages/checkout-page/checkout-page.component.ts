@@ -8,11 +8,13 @@ import { CartItem } from '../cart-page/interfaces/cart-item';
 import { CartService } from '../cart-page/services/cart.service';
 
 
-import { get } from 'scriptjs'; 
+// import { get } from 'scriptjs'; 
 import { OrdersService } from '../my-dashboard-page/orders-page/services/orders.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogCuposComponent } from './dialog-cupos/dialog-cupos.component';
 import { UsersService } from 'src/app/auth/users.service';
+declare let fbq: Function;//facebook pixel
+
 
 @Component({
   selector: 'app-checkout-page',
@@ -24,7 +26,7 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
   formValid: boolean;
   products: CartItem[];
   countItemsCart: number;
-  subscription: Subscription[]=[];
+  subscription: Subscription[] = [];
   user: Observable<User>;
   user_id: number;
 
@@ -35,71 +37,74 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
     private authServices: AuthService,
     private userService: UsersService,
     public dialog: MatDialog
-  ) { 
+  ) {
 
   }
 
   ngOnInit(): void {
-    get("https://www.mercadopago.com.uy/integrations/v1/web-payment-checkout.js", () => {
-      //library has been loaded...
-    });
+    // get("https://www.mercadopago.com.uy/integrations/v1/web-payment-checkout.js", () => {
+    //   //library has been loaded...
+    // });
     // const logged = this.authServices.checkUser()
-    this.authServices.currentUser.subscribe(res=> {
-      if(res && res.id){
+    //facebook
+    fbq('track', 'AddToCart');
+    ///////////
+    this.authServices.currentUser.subscribe(res => {
+      if (res && res.id) {
         this.user_id = res?.id
-        this.user = this.userService.getUser(res.id).pipe(map(v=>v.data))
+        this.user = this.userService.getUser(res.id).pipe(map(v => v.data))
 
       }
     })
 
-    
-     
+
+
     this.formValid = false;
     this.subscription.push(
       this.cartService.countItems$.subscribe(res => {
         this.countItemsCart = res
-        if (this.form?.valid && this.countItemsCart >=1 ) {
+        if (this.form?.valid && this.countItemsCart >= 1) {
           this.formValid = true
-        }else{
+        } else {
           this.formValid = false;
         }
-      } )
+      })
     )
     console.log(this.form?.valid);
-    
+
   }
-  
-  
-  formChange(form: FormGroup){
-    
+
+
+  formChange(form: FormGroup) {
+
     this.form = form;
-    if (this.form.valid && this.countItemsCart >=1 ) {
+    if (this.form.valid && this.countItemsCart >= 1) {
       this.formValid = this.form.valid
-    }else{
+    } else {
       this.formValid = false;
     }
-    
+
     console.log(form);
-    
-    
+
+
   }
 
 
-  onSubmitOrder(){
-    
+  onSubmitOrder() {
+
 
     let data = this.form.value
     let total
-    this.cartService.getItems().subscribe(res=> this.products = res )
-    this.cartService.getTotalAmount().subscribe(res=> total = res )
-    data.products = this.products.map(v=> { 
+    this.cartService.getItems().subscribe(res => this.products = res)
+    this.cartService.getTotalAmount().subscribe(res => total = res)
+    data.products = this.products.map(v => {
       return {
-        quantity: v.quantity, 
-        course_id : v.product.id, 
-        price: v.product.price, 
+        quantity: v.quantity,
+        course_id: v.product.id,
+        price: v.product.price,
         currency_id: v.product.currency_id,
         user_id: this.user_id
-      } 
+      }
     })
     data.user_id = this.user_id;
     data.total = total;
@@ -107,28 +112,32 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
     // data.status_id = 0;
     this.subscription.push(
       this.orderService.storeOrder(data).subscribe(
-        res=> {
+        res => {
           const init_point = res.init_point;
           const newCourse = res.new_course
-          if(newCourse){
+          if (newCourse) {
             this.openDialogCupos(newCourse)
           }
-          if(init_point){
+          if (init_point) {
             window.location.href = init_point;
           }
+
+          fbq('track', 'AddPaymentInfo');
+          fbq('track', 'InitiateCheckout');
+
         },
         // err => this.openDialogCupos()
-        
-        
+
+
       )
     )
-  
-    
+
+
   }
 
   ngOnDestroy(): void {
 
-    this.subscription.map(v=>v.unsubscribe())
+    this.subscription.map(v => v.unsubscribe())
   }
 
 
@@ -141,7 +150,7 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      
+
     });
   }
 }

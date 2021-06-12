@@ -9,6 +9,8 @@ export const environment = {
   // AuthAPI: 'http://on_api_v1.test/api/auth/'
 
   API: "https://api.oncapacitaciones.com/api/",
+  urlImages: "https://api.oncapacitaciones.com/storage/images/",
+
   AuthAPI: 'https://api.oncapacitaciones.com/api/auth/'
 };
 

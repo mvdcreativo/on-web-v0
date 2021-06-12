@@ -15,10 +15,10 @@
             <div class="courses-desc">
                 <div class="courses-content">
                     <div class="course-author d-flex align-items-center">
-                        <img [src]="course.user_instructor.account.image" class="rounded-circle mr-2" alt="image">
+                        <img [src]="course?.user_instructor?.account?.image" class="rounded-circle mr-2" alt="image">
                         <span>
                             <p class="title">Docente</p>
-                            <span><a [routerLink]="['/docentes', course.user_instructor.slug]" >{{ course.user_instructor.name }}</a></span>
+                            <span><a [routerLink]="['/docentes', course?.user_instructor?.slug]" >{{ course?.user_instructor?.name }}</a></span>
                         </span>
                     </div>
                     <h3><a [routerLink]="['/cursos/curso', course.slug]" class="d-inline-block">{{ course.title }}</a></h3>

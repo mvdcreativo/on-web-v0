@@ -6,6 +6,7 @@ import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { UsersService } from 'src/app/auth/users.service';
+import { SeoService } from 'src/app/shared/seo/services/seo.service';
 
 @Component({
   selector: 'app-register-page',
@@ -21,8 +22,10 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private fb:FormBuilder,
     private router:Router,
-    private userService: UsersService
+    private userService: UsersService,
+    private seoService: SeoService
   ) { 
+    this.setSeo()
     this.emailExistValidation()
     
     this.error$ = this.authService.error$
@@ -109,5 +112,18 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
     }
 
     return message
+  }
+
+  setSeo() {
+    //////seo/////  
+
+    this.seoService.genrateTags({
+
+      title: `Registro`,
+      description: `Créate una cuenta AHORA!`,
+      slug: `/registro`,
+
+    })
+    ////////////
   }
 }

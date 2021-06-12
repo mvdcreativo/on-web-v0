@@ -17,12 +17,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/on-capacitaciones",
+            "outputPath": "dist/on-capacitaciones/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
+            "aot": false,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -36,7 +36,6 @@
               "src/assets/css/magnific-popup.min.css",
               "src/assets/css/meanmenu.min.css",
               "src/assets/css/nice-select.min.css",
-              "src/assets/css/odometer.min.css",
               "src/assets/css/slick.min.css",
               "src/assets/css/viewer.min.css",
               "src/styles.scss"
@@ -51,7 +50,6 @@
               "src/assets/js/meanmenu.min.js",
               "src/assets/js/mixitup.min.js",
               "src/assets/js/nice-select.min.js",
-              "src/assets/js/odometer.min.js",
               "src/assets/js/parallax.min.js",
               "src/assets/js/particles.min.js",
               "src/assets/js/slick.min.js",
@@ -71,6 +69,7 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
+              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -129,7 +128,8 @@
             "tsConfig": [
               "tsconfig.app.json",
               "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "e2e/tsconfig.json",
+              "tsconfig.server.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -146,6 +146,53 @@
             "production": {
               "devServerTarget": "on-capacitaciones:serve:production"
             }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/on-capacitaciones/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "on-capacitaciones:build",
+            "serverTarget": "on-capacitaciones:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "on-capacitaciones:build:production",
+              "serverTarget": "on-capacitaciones:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "on-capacitaciones:build:production",
+            "serverTarget": "on-capacitaciones:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
           }
         }
       }
