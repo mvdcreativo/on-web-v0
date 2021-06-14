@@ -219,6 +219,29 @@ img {
     }
 }
 
+//Btn Wsp
+.wsp-btn{
+    display: flex!important;
+    align-items: center!important;
+    background-color: #25D366!important;
+    position: fixed!important;
+    border-radius: 50px!important;
+    color: white;
+    z-index: 1000;
+    bottom: 1rem;
+    right: 1%;
+    padding-right: 0px!important;
+    // padding-left: 10px!important;
+    height: 44px!important;
+    span{
+        padding-right: 4px;
+    }
+    .mat-icon{
+        width: 36px!important;
+        height: 36px!important;
+        
+    }
+}
 /*section-title*/
 .section-title {
     text-align: center;

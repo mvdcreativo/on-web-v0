@@ -34,75 +34,10 @@ import { CheckoutPageComponent } from './components/pages/checkout-page/checkout
 import { ContactPageComponent } from './components/pages/contact-page/contact-page.component';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { InstructorsPageTwoComponent } from './components/pages/instructors-page-two/instructors-page-two.component';
-// import { CategoryPageOneComponent } from './components/pages/category-page-one/category-page-one.component';
-// import { CategoryPageTwoComponent } from './components/pages/category-page-two/category-page-two.component';
-// import { CategoryPageThreeComponent } from './components/pages/category-page-three/category-page-three.component';
-// import { CoursesListPageComponent } from './components/pages/courses-list-page/courses-list-page.component';
-// import { CoursesGridStyleOneColumnsThreePageComponent } from './components/pages/courses-grid-style-one-columns-three-page/courses-grid-style-one-columns-three-page.component';
-// import { CoursesGridStyleOneColumnsFourPageComponent } from './components/pages/courses-grid-style-one-columns-four-page/courses-grid-style-one-columns-four-page.component';
-// import { CoursesGridStyleTwoColumnsTwoPageComponent } from './components/pages/courses-grid-style-two-columns-two-page/courses-grid-style-two-columns-two-page.component';
-// import { CoursesGridStyleTwoColumnsThreePageComponent } from './components/pages/courses-grid-style-two-columns-three-page/courses-grid-style-two-columns-three-page.component';
-// import { CoursesGridStyleThreeColumnsThreePageComponent } from './components/pages/courses-grid-style-three-columns-three-page/courses-grid-style-three-columns-three-page.component';
-// import { CoursesGridStyleThreeColumnsTwoPageComponent } from './components/pages/courses-grid-style-three-columns-two-page/courses-grid-style-three-columns-two-page.component';
-// import { CoursesDetailsPageComponent } from './components/pages/courses-details-page/courses-details-page.component';
-// import { MyDashboardPageComponent } from './components/pages/my-dashboard-page/my-dashboard-page.component';
-// import { OrdersPageComponent } from './components/pages/orders-page/orders-page.component';
-// import { DownloadsPageComponent } from './components/pages/downloads-page/downloads-page.component';
-// import { EditAddressPageComponent } from './components/pages/edit-address-page/edit-address-page.component';
-// import { EditAccountPageComponent } from './components/pages/edit-account-page/edit-account-page.component';
-// import { EditBillingAddressPageComponent } from './components/pages/edit-billing-address-page/edit-billing-address-page.component';
-// import { EditShippingAddressPageComponent } from './components/pages/edit-shipping-address-page/edit-shipping-address-page.component';
+import { BtnWspRedirectComponent } from './shared/components/btn-wsp-redirect/btn-wsp-redirect.component';
 
 const routes: Routes = [
-    // {path: '', component: HomePageOneComponent},
-    // {path: 'distant-learning', component: HomePageThreeComponent},
-    // {path: 'modern-teaching', component: HomePageFourComponent},
-    // {path: 'online-schooling', component: HomePageFiveComponent},
-    // {path: 'learning-school-online', component: HomePageSixComponent},
-    // {path: 'remote-training-online', component: HomePageSevenComponent},
-    // {path: 'about-style-1', component: AboutPageOneComponent},
-    // {path: 'about-style-2', component: AboutPageTwoComponent},
-    // {path: 'instructor-1', component: InstructorsPageOneComponent},
-    // {path: 'instructor-2', component: InstructorsPageTwoComponent},
-    // {path: 'instructor-3', component: InstructorsPageThreeComponent},
-    // {path: 'single-instructor', component: InstructorsDetailsPageComponent},
-    // {path: 'gallery', component: GalleryPageComponent},
-    // {path: 'events', component: EventsPageComponent},
-    // {path: 'single-events', component: EventsDetailsPageComponent},
-    // {path: 'pricing', component: PricingPageComponent},
-    // {path: 'feedback', component: FeedbackPageComponent},
-    // {path: 'partner', component: PartnerPageComponent},
-    // {path: 'faqs', component: FaqPageComponent},
-    // {path: 'coming-soon', component: ComingSoonPageComponent},
-    // {path: 'courses-category-style-1', component: CategoryPageOneComponent},
-    // {path: 'courses-category-style-2', component: CategoryPageTwoComponent},
-    // {path: 'courses-category-style-3', component: CategoryPageThreeComponent},
-    // {path: 'cursos', component: CoursesListPageComponent},
-    // {path: 'cursos/destacados/:destacados', component: CoursesListPageComponent},
-    // {path: 'cursos/:categorySlug', component: CoursesListPageComponent},
-    // {path: 'buscar/cursos/:search', component: CoursesListPageComponent},
-    // {path: 'cursos1', component: CoursesGridStyleOneColumnsThreePageComponent},
-    // {path: 'courses-4-columns-style-1', component: CoursesGridStyleOneColumnsFourPageComponent},
-    // {path: 'courses-2-columns-style-2', component: CoursesGridStyleTwoColumnsTwoPageComponent},
-    // {path: 'courses-3-columns-style-2', component: CoursesGridStyleTwoColumnsThreePageComponent},
-    // {path: 'courses-4-columns-style-2', component: CoursesGridStyleTwoColumnsFourPageComponent},
-    // {path: 'courses-2-columns-style-3', component: CoursesGridStyleThreeColumnsTwoPageComponent},
-    // {path: 'courses-3-columns-style-3', component: CoursesGridStyleThreeColumnsThreePageComponent},
-    // {path: 'courses-4-columns-style-3', component: CoursesGridStyleThreeColumnsFourPageComponent},
-    // {path: 'curso/:slug', component: CoursesDetailsPageComponent},
-    // {path: 'orders', component: OrdersPageComponent},
-    // {path: 'downloads', component: DownloadsPageComponent},
-    // {path: 'edit-address', component: EditAddressPageComponent},
-    // {path: 'edit-billing-address', component: EditBillingAddressPageComponent},
-    // {path: 'edit-shipping-address', component: EditShippingAddressPageComponent},
-    // {path: 'blog-style-1', component: BlogGridPageComponent},
-    // {path: 'blog-style-2', component: BlogRightSidebarPageComponent},
-    // {path: 'blog-style-3', component: BlogFullWidthPageComponent},
-    // {path: 'single-blog', component: BlogDetailsPageComponent},
-    // {path: 'shop-grid', component: ShopGridPageComponent},
-    // {path: 'shop-grid-fullwidth', component: ShopFullWidthPageComponent},
-    // {path: 'single-products', component: ProductsDetailsPageComponent},
-    // {path: 'cart', component: CartPageComponent},
+    {path: 'contacto/whatsapp', component: BtnWspRedirectComponent},
     {path: 'contacto', component: ContactPageComponent},
 
     { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule) },

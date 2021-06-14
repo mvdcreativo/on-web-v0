@@ -20,6 +20,7 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { DynamicPipePipe } from './pipes/dynamic-pipe.pipe';
 import { DinamicFormComponent } from './components/dinamic-form/dinamic-form.component';
 import { CourseItemCardComponent } from './components/course-item-card/course-item-card.component';
+import { BtnWspRedirectComponent } from './components/btn-wsp-redirect/btn-wsp-redirect.component';
 
 
 
@@ -37,8 +38,8 @@ import { CourseItemCardComponent } from './components/course-item-card/course-it
     CartComponent,
     DynamicPipePipe,
     DinamicFormComponent,
-    CourseItemCardComponent
-    
+    CourseItemCardComponent,
+    BtnWspRedirectComponent
   ],
   imports: [
     CommonModule,
@@ -68,7 +69,8 @@ import { CourseItemCardComponent } from './components/course-item-card/course-it
     MatMomentDateModule,
     DynamicPipePipe,
     DinamicFormComponent,
-    CourseItemCardComponent
+    CourseItemCardComponent,
+    BtnWspRedirectComponent
   ],
   providers: [
     DatePipe
