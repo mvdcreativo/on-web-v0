@@ -10,6 +10,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { SeoService } from 'src/app/shared/seo/services/seo.service';
 import { environment } from 'src/environments/environment';
+import { animate } from '@angular/animations';
 declare let fbq: Function;//facebook pixel
 
 @Component({
@@ -20,6 +21,7 @@ declare let fbq: Function;//facebook pixel
 export class CoursesDetailsPageComponent implements OnInit{
   course$: Observable<Course>;
   subscriptions: Subscription[] = []
+  animate:boolean = false;
 
   constructor(
     private activateRoute : ActivatedRoute,
@@ -39,7 +41,13 @@ export class CoursesDetailsPageComponent implements OnInit{
         const slug = params.params.slug;
         this.course$ = this.courseService.getCourseBySlug(slug);
         this.subscriptions.push(
-          this.course$.subscribe(res=>this.setSeo(res))
+          this.course$.subscribe(res=>{
+            
+            setTimeout(() => {
+              this.animate = true
+            }, 3000);
+            this.setSeo(res)
+          })
         );
         this.styleService.getColorCtegory(this.course$)
         
