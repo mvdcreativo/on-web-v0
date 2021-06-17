@@ -73,7 +73,7 @@ export class CoursesListPageComponent implements OnInit {
   getCursos(){
     this.activateRoute.paramMap.subscribe(
       (params:Params) => {
-        console.log(params.params);
+        // console.log(params.params);
         
         if(params.params.categorySlug){
 

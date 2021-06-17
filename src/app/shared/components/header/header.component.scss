@@ -28,7 +28,7 @@
     li {
         display: inline-block;
         color: var(--whiteColor);
-        margin-right: 20px;
+        // margin-right: 20px;
         position: relative;
         padding-left: 38px;
         font-size: 12px;
@@ -183,7 +183,7 @@
         bottom: 0;
     };
     .top-header-contact-info {
-        display: inline-block;
+        // display: inline-block;
         padding: {
             top: 10px;
             bottom: 10px;
@@ -769,8 +769,6 @@
         };
     }
     .top-header-contact-info {
-        display: flex;
-        flex-wrap: wrap;
 
         li {
             font-size: 12.5px;
@@ -829,7 +827,6 @@
             bottom: 15px;
         };
         .top-header-contact-info {
-            flex-wrap: unset;
             padding: {
                 top: 0;
                 bottom: 0;

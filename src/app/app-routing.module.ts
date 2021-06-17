@@ -63,6 +63,8 @@ const routes: Routes = [
       path: 'docentes', 
       loadChildren: () => import('./components/pages/instructors/instructors.module').then(m => m.InstructorsModule) 
     },
+    { path: 'comunidad', loadChildren: () => import('./components/pages/community-feed-i/community-feed-i.module').then(m => m.CommunityFeedIModule) },
+    { path: 'aprendo-en-casa', loadChildren: () => import('./components/pages/aprendo-en-casa-feed-i/aprendo-en-casa-feed-i.module').then(m => m.AprendoEnCasaFeedIModule) },
     { path: 'pagina-no-encontrada', component: ErrorPageComponent },
     { path: '**', redirectTo: '/pagina-no-encontrada', pathMatch: 'full' }
 ];

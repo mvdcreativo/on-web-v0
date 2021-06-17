@@ -45,7 +45,7 @@ export class CoursesService {
 
     }).pipe(map(
       res => {
-        console.log(res);
+        // console.log(res);
         
         this.setItems(res)
         const resp = res

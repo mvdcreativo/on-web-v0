@@ -73,12 +73,12 @@ export class AppComponent implements OnInit {
 
     private subscribeToObservables() {
         this.scroll$.subscribe(() => {
-            console.log(this.scroll);
+            // console.log(this.scroll);
             
             this.scroll = true
             setTimeout(()=>{ 
                 this.scroll = false
-                console.log(this.scroll);
+                // console.log(this.scroll);
             }, 2000);
             
         })
