@@ -270,6 +270,16 @@ img {
     padding:1rem
 }
 
+.footer-area .container .eapps-instagram-feed-posts-view{
+    // flex-wrap: nowrap!important;
+}
+.eapps-instagram-feed-posts-item-template-tile{
+    border-radius: 10px!important;
+    width: calc(20% - 7px)!important;
+    background-color:black!important;
+
+}
+
 ////////////
 /*section-title*/
 .section-title {
