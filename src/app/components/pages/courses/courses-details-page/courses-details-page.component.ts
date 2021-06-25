@@ -32,7 +32,7 @@ export class CoursesDetailsPageComponent implements OnInit{
     private seoService: SeoService,
 
     ) {
-      
+      fbq('track', 'ViewContent');
     }
 
   ngOnInit(): void {
