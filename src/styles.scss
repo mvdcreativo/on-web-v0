@@ -23,7 +23,14 @@
   
     --background-gral: #f7f7f7;
   }
-
+.color-wsp{
+    background-color:#25d366!important;
+    border-color:none!important;
+    &:hover, &:focus {
+        background-color: var(--optionalColor)!important;
+        color: var(--whiteColor)!important;
+    }
+}
 .container{
     // min-height: 100vh;
 }

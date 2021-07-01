@@ -58,6 +58,10 @@ export class CoursesDetailsPageComponent implements OnInit{
     
   }
 
+  wsp(title){
+    fbq('track', 'Lead');
+    window.location.href = `https://wa.me/598092040486?text=Quiero%20consultar%20financiación%20mes%20a%20mes%20en%20la%20escuela%20para%20el%20curso%20${title}`
+  }
 
   pay(course){
     const item = this.cartService.addToCart(course,1)
