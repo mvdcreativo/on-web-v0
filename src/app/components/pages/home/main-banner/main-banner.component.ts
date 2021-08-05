@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { Observable } from 'rxjs';
+import { BannerService } from './banner.service';
+import { Image } from "./interface/image";
+
 
 @Component({
   selector: 'app-main-banner',
@@ -8,19 +12,15 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 })
 export class MainBannerComponent implements OnInit {
 
-  imagesBanner = [
-    { src: "assets/img/banner/01.jpg", text: "" },
-    { src: "assets/img/banner/02.jpg", text: "" },
-    { src: "assets/img/banner/03.jpg", text: "" },
-    { src: "assets/img/banner/04.jpg", text: "" },
-    { src: "assets/img/banner/05.jpg", text: "" },
-    { src: "assets/img/banner/06.jpg", text: "" },
-  ]
+  imagesBanner : Observable<Image[]>;
 
 
-  constructor() { }
+  constructor(
+    private bannerServices: BannerService,
+  ) { }
 
   ngOnInit(): void {
+    this.imagesBanner = this.bannerServices.getCarousel()
   }
   config: SwiperConfigInterface = {
     direction: 'horizontal',

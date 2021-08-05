@@ -93,6 +93,7 @@
         adquired_skills?: AdquiredSkills[];
         level?: Level;
         status_id:number;
+        images: Image[];
     }
 
     export interface Level {
@@ -187,13 +188,13 @@
         data?: Paginate;
         success?: boolean;
     }
-    
+
     export interface Response {
         message?: string;
         data?: any;
         success?: boolean;
     }
-    
+
     export interface Paginate {
         current_page: number;
         data: any[];
@@ -207,4 +208,16 @@
         prev_page_url?: any;
         to?: any;
         total: number;
+    }
+
+    export interface Image {
+        id?: number;
+        url: string;
+        url_small: string;
+        url_medium: string;
+        title?: string;
+        subtitle?: string;
+        description?: string;
+        position?:number;
+
     }

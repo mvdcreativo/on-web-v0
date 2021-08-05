@@ -65,6 +65,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 ///LOGIN SOCIAL
 import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+import { DecimalPipe } from '@angular/common';
+import { NumberFormatPipe } from './shared/pipes/number-format.pipe';
 
 
 @NgModule({
@@ -133,6 +135,8 @@ import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider, Facebo
 
   ],
   providers: [
+    DecimalPipe,
+    NumberFormatPipe,
     indexAuthInterceptor,
     {provide: MAT_DATE_LOCALE, useValue: 'es-UY'},
     //// SOCIAL LOGIN
@@ -157,6 +161,7 @@ import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider, Facebo
     ////////////////
 
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

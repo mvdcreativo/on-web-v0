@@ -14,6 +14,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     CartPageRoutingModule,
     SharedModule
-  ]
+  ],
 })
 export class CartPageModule { }

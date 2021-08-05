@@ -5,8 +5,8 @@
                 <tr>
                     <th scope="col">Curso/Lección</th>
                     <th scope="col">Descripción</th>
-                    <!-- <th scope="col">Unit Price</th>
-                    <th scope="col">Quantity</th> -->
+                    <!-- <th scope="col">Unit Price</th> -->
+                    <th scope="col">Desc.</th>
                     <th scope="col">Total</th>
                 </tr>
             </thead>
@@ -20,9 +20,9 @@
                     <td class="product-name">
                         <a [routerLink]="['/cursos/curso', item.product.slug]">{{ item.product.title }}</a>
                     </td>
-                    <!-- <td class="product-price">
-                        <span class="unit-amount">$455.00</span>
-                    </td> -->
+                    <td class="product-price">
+                        <span class="unit-amount">{{ item.product.discount_uno }}%</span>
+                    </td>
                     <!-- <td class="product-quantity">
                         <div class="input-counter">
                             <span class="minus-btn"><i class='bx bx-minus'></i></span>
@@ -30,12 +30,16 @@
                             <span class="plus-btn"><i class='bx bx-plus'></i></span>
                         </div>
                     </td> -->
-                    <td class="product-subtotal">
+                    <td class="product-subtotal" *ngIf="!item.product.discount_uno">
                         <span class="subtotal-amount">{{ item.product.currency.symbol }} {{ item.product.price |number }}</span>
                         <a (click)="remove(item)" class="remove"><i class='bx bx-trash'></i></a>
                     </td>
+                    <td class="product-subtotal" *ngIf="item.product.discount_uno">
+                        <span class="subtotal-amount">{{ item.product.currency.symbol }} {{ item.product.price - item.product.price * +item.product.discount_uno /100 | number: '1.0-0' }}</span>
+                        <a (click)="remove(item)" class="remove"><i class='bx bx-trash'></i></a>
+                    </td>
                 </tr>
-                
+
             </tbody>
         </table>
     </ng-container>
@@ -45,6 +49,6 @@
             <h4>No tienes nada a pagar</h4>
         </div>
     </ng-template>
-    
-    
+
+
 </div>

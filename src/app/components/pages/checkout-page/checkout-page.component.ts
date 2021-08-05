@@ -8,18 +8,21 @@ import { CartItem } from '../cart-page/interfaces/cart-item';
 import { CartService } from '../cart-page/services/cart.service';
 
 
-// import { get } from 'scriptjs'; 
+// import { get } from 'scriptjs';
 import { OrdersService } from '../my-dashboard-page/orders-page/services/orders.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogCuposComponent } from './dialog-cupos/dialog-cupos.component';
 import { UsersService } from 'src/app/auth/users.service';
+import { DecimalPipe } from '@angular/common';
+import { NumberFormatPipe } from 'src/app/shared/pipes/number-format.pipe';
 declare let fbq: Function;//facebook pixel
 
 
 @Component({
   selector: 'app-checkout-page',
   templateUrl: './checkout-page.component.html',
-  styleUrls: ['./checkout-page.component.scss']
+  styleUrls: ['./checkout-page.component.scss'],
+  providers: [ NumberFormatPipe ]
 })
 export class CheckoutPageComponent implements OnInit, OnDestroy {
   form: FormGroup;
@@ -36,7 +39,10 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
     private orderService: OrdersService,
     private authServices: AuthService,
     private userService: UsersService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private decimalPipe: DecimalPipe,
+    private formatPipe: NumberFormatPipe
+
   ) {
 
   }
@@ -98,10 +104,15 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
     this.cartService.getItems().subscribe(res => this.products = res)
     this.cartService.getTotalAmount().subscribe(res => total = res)
     data.products = this.products.map(v => {
+        let calc_price = v.product.price - v.product.price * v.product.discount_uno / 100
+        let round = Math.round(calc_price);
+        console.log(round);
+        // let roundRemoveComa = this.formatPipe.transform( parseFloat(round))
+        // console.log(roundRemoveComa);
       return {
         quantity: v.quantity,
         course_id: v.product.id,
-        price: v.product.price,
+        price: round,
         currency_id: v.product.currency_id,
         user_id: this.user_id
       }

@@ -20,7 +20,7 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="hero-banner-image text-center">
                             <swiper  [config]="config" class="swiper-container">
-                                <img *ngFor="let image of imagesBanner" [src]="image.src" [alt]="image.text">
+                                <img *ngFor="let image of imagesBanner | async" [src]="image.url" [alt]="image.url">
                             </swiper>
                         </div>
                     </div>

@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 import { SeoService } from 'src/app/shared/seo/services/seo.service';
 import { environment } from 'src/environments/environment';
 import { animate } from '@angular/animations';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 declare let fbq: Function;//facebook pixel
 
 @Component({
@@ -22,6 +23,7 @@ export class CoursesDetailsPageComponent implements OnInit{
   course$: Observable<Course>;
   subscriptions: Subscription[] = []
   animate:boolean = false;
+    value_discount: number;
 
   constructor(
     private activateRoute : ActivatedRoute,
@@ -34,7 +36,21 @@ export class CoursesDetailsPageComponent implements OnInit{
     ) {
       fbq('track', 'ViewContent');
     }
+    config: SwiperConfigInterface = {
+        direction: 'horizontal',
+        centeredSlides: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        slidesPerView: 1,
+        spaceBetween: 30,
+        // loop: true,
+        // slidesPerView: 1,
+        effect: 'fade',
+        loopedSlides: 1,
 
+    };
   ngOnInit(): void {
     this.activateRoute.paramMap.subscribe(
       (params:Params) => {
@@ -42,7 +58,7 @@ export class CoursesDetailsPageComponent implements OnInit{
         this.course$ = this.courseService.getCourseBySlug(slug);
         this.subscriptions.push(
           this.course$.subscribe(res=>{
-            
+
             setTimeout(() => {
               this.animate = true
             }, 3000);
@@ -50,12 +66,12 @@ export class CoursesDetailsPageComponent implements OnInit{
           })
         );
         this.styleService.getColorCtegory(this.course$)
-        
+
       }
-      
+
     );
 
-    
+
   }
 
   wsp(title){
@@ -63,10 +79,14 @@ export class CoursesDetailsPageComponent implements OnInit{
     window.location.href = `https://wa.me/598092040486?text=Quiero%20consultar%20financiación%20mes%20a%20mes%20en%20la%20escuela%20para%20el%20curso%20${title}`
   }
 
+  calcPriceDiscount(price, discount){
+    const value_discount = +price * +discount / 100
+    return price - value_discount;
+  }
+
   pay(course){
     const item = this.cartService.addToCart(course,1)
     if (item !== false) {
-
       this.router.navigate(['/orden-de-compra'])
     }
   }
@@ -79,7 +99,7 @@ export class CoursesDetailsPageComponent implements OnInit{
   setSeo(dataProduct:Course) {
     //////seo/////
     // console.log(dataProduct);
-    
+
     let t: string = dataProduct.title;
 
     this.seoService.genrateTags({

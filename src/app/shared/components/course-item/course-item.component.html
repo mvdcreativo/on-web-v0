@@ -2,10 +2,13 @@
     <div class="single-courses-list-box mb-30">
         <div class="box-item">
             <div class="courses-image">
-                <div class="image bg-1" [ngStyle]="{'background-image': 'url('+course.image+')'}">
-                    <img [src]="course.image" alt="image">
+                <div class="image bg-1" [ngStyle]="{'background-image': 'url('+course.images[0].url_medium+')'}">
+                    <!-- <swiper [config]="config" class="swiper-container">
+                        <img *ngFor="let image of course.images" [src]="image.url" >
+                    </swiper> -->
+                    <!-- <img [src]="course.image" alt="image"> -->
                     <a [routerLink]="['/cursos/curso', course.slug]" class="link-btn"></a>
-                    <div class="courses-tag" *ngFor="let category of course.categories" 
+                    <div class="courses-tag" *ngFor="let category of course.categories"
                     [ngStyle]="{'background-color': category.color, 'color': '#fff'}">
                         <a routerLink="/courses-list" class="d-block">{{ category.name }}</a>
                     </div>
@@ -55,15 +58,20 @@
                             <span><i class='bx bx-book-open'></i> clases</span>
                             <span>{{ totalLessons(course) }}</span>
                         </li>
-                        
+
                         <li class="add-to-card">
                         </li>
-                        <li class="courses-price">
-                            <!-- <button class="add-card-btn" mat-flat-button >
-                                <mat-icon>add_shopping_cart</mat-icon>
-                                inscribirme
-                            </button> -->
-                            {{ course.currency.symbol }} {{ course.price | number }} 
+                        <li *ngIf="!course.discount_uno || !+course.discount_uno" class="courses-price">
+                            {{ course.currency.symbol }} {{ course.price | number }}
+                        </li>
+
+                        <li class="courses-price" *ngIf="+course.discount_uno ">
+                            <p class="">
+                                <span class="old-price">{{ course.currency.symbol }} {{ course.price | number:'1.0-0' }}</span>
+
+                                <span class="discount"> {{ course.discount_uno }}% OFF</span>
+                            </p>
+                            {{ course.currency.symbol }} {{ (+course.price - +course.price * +course.discount_uno / 100 )| number:'1.0-0'}}
                         </li>
                     </ul>
                 </div>

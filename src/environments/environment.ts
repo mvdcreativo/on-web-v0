@@ -8,10 +8,10 @@ export const environment = {
   // API: "http://on_api_v1.test/api/",
   // AuthAPI: 'http://on_api_v1.test/api/auth/'
 
-  API: "https://api.oncapacitaciones.com/api/",
-  urlImages: "https://api.oncapacitaciones.com/storage/images/",
+  API: "http://on_api.test/api/",
+  urlImages: "http://on_api.test/storage/images/",
 
-  AuthAPI: 'https://api.oncapacitaciones.com/api/auth/'
+  AuthAPI: 'http://on_api.test/api/auth/'
 };
 
 /*

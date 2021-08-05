@@ -21,6 +21,7 @@ import { DynamicPipePipe } from './pipes/dynamic-pipe.pipe';
 import { DinamicFormComponent } from './components/dinamic-form/dinamic-form.component';
 import { CourseItemCardComponent } from './components/course-item-card/course-item-card.component';
 import { BtnWspRedirectComponent } from './components/btn-wsp-redirect/btn-wsp-redirect.component';
+import { NumberFormatPipe } from './pipes/number-format.pipe';
 
 
 
@@ -39,7 +40,8 @@ import { BtnWspRedirectComponent } from './components/btn-wsp-redirect/btn-wsp-r
     DynamicPipePipe,
     DinamicFormComponent,
     CourseItemCardComponent,
-    BtnWspRedirectComponent
+    BtnWspRedirectComponent,
+    NumberFormatPipe
   ],
   imports: [
     CommonModule,
@@ -49,7 +51,7 @@ import { BtnWspRedirectComponent } from './components/btn-wsp-redirect/btn-wsp-r
     // FormsModule,
     MaterialModule,
     MatMomentDateModule,
-    
+
 
   ],
   exports: [
@@ -70,7 +72,8 @@ import { BtnWspRedirectComponent } from './components/btn-wsp-redirect/btn-wsp-r
     DynamicPipePipe,
     DinamicFormComponent,
     CourseItemCardComponent,
-    BtnWspRedirectComponent
+    BtnWspRedirectComponent,
+    NumberFormatPipe
   ],
   providers: [
     DatePipe

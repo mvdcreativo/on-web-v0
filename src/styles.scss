@@ -20,7 +20,7 @@
     --color-warn: rgb(211, 47, 47);
     --color-dark: rgb(33, 33, 33);
     --color-grey: rgb(221, 221, 221);
-  
+
     --background-gral: #f7f7f7;
   }
 .color-wsp{
@@ -246,7 +246,7 @@ img {
     .mat-icon{
         width: 36px!important;
         height: 36px!important;
-        
+
     }
 }
 
@@ -462,7 +462,7 @@ textarea.form-control {
             }
         }
         &:hover, &:focus {
-            .owl-nav {    
+            .owl-nav {
                 [class*=owl-] {
                     left: -70px;
                     opacity: 1;
@@ -532,7 +532,7 @@ textarea.form-control {
             }
         }
         &:hover, &:focus {
-            .owl-nav {    
+            .owl-nav {
                 [class*=owl-] {
                     left: -70px;
                     opacity: 1;
@@ -622,7 +622,7 @@ textarea.form-control {
             }
         }
         &:hover, &:focus {
-            .owl-nav {    
+            .owl-nav {
                 [class*=owl-] {
                     left: -70px;
                     opacity: 1;
@@ -698,7 +698,7 @@ textarea.form-control {
             }
         }
         &:hover, &:focus {
-            .owl-nav {    
+            .owl-nav {
                 [class*=owl-] {
                     left: 70px;
 
@@ -761,7 +761,7 @@ textarea.form-control {
             }
         }
         &:hover, &:focus {
-            .owl-nav {    
+            .owl-nav {
                 [class*=owl-] {
                     left: -70px;
                     opacity: 1;
@@ -965,25 +965,25 @@ textarea.form-control {
 @keyframes border-transform {
     0%,100% {
         border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
-    } 
+    }
 	14% {
         border-radius: 40% 60% 54% 46% / 49% 60% 40% 51%;
-    } 
+    }
 	28% {
         border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%;
-    } 
+    }
 	42% {
         border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%;
-    } 
+    }
 	56% {
         border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%;
-    } 
+    }
 	70% {
         border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%;
-    } 
+    }
 	84% {
         border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%;
-    } 
+    }
 }
 @keyframes ripple {
     0% {
@@ -1003,7 +1003,7 @@ textarea.form-control {
 .courses-categories-area {
     position: relative;
     z-index: 1;
-    
+
     &.bg-image {
         background-image: url(assets/img/pattern.jpg);
     }
@@ -1093,7 +1093,7 @@ textarea.form-control {
 .partner-area {
     &.bg-color {
         background-color: var(--mainColor);
-    
+
         .section-title {
             h2 {
                 color: var(--whiteColor);
@@ -1664,7 +1664,7 @@ textarea.form-control {
 .tab {
     .tabs-item {
         display: none;
-        
+
         &:first-child {
             display: block;
         }
@@ -1817,7 +1817,7 @@ textarea.form-control {
     .widget_search {
         form {
             position: relative;
-            
+
             .screen-reader-text {
                 display: none;
             }
@@ -1872,7 +1872,7 @@ textarea.form-control {
     .widget_ednuv_posts_thumb {
         position: relative;
         overflow: hidden;
-        
+
         .item {
             overflow: hidden;
             margin-bottom: 15px;
@@ -2505,7 +2505,7 @@ blockquote, .blockquote {
         border: none!important;
         box-shadow:0px 8px 16px 0px rgb(146 184 255 / 30%);
         width: calc(50% - 0.5rem)!important;
-        
+
     }
     .eapps-instagram-feed-posts-view{
         padding:1rem;
@@ -2608,7 +2608,7 @@ blockquote, .blockquote {
     .instructor-area {
         overflow: hidden;
     }
-    
+
     .feedback-slides {
         &.owl-theme {
             margin-bottom: 0;
@@ -2640,7 +2640,7 @@ blockquote, .blockquote {
             }
         }
     }
-    
+
     .blog-slides {
         &.owl-theme {
             .owl-nav {
@@ -2749,11 +2749,11 @@ blockquote, .blockquote {
             }
         }
     }
-    
+
     .feedback-form-area {
         margin-top: -10px;
     }
-    
+
     .divider {
         bottom: -1px;
     }
@@ -2797,7 +2797,7 @@ blockquote, .blockquote {
             }
         }
     }
-    
+
     .courses-topbar {
         text-align: center;
 
@@ -2938,7 +2938,7 @@ blockquote, .blockquote {
             border: none!important;
             box-shadow:0px 8px 16px 0px rgb(146 184 255 / 30%);
             width: calc(100%)!important;
-            
+
         }
         .eapps-instagram-feed-posts-view{
             padding:1rem;
@@ -2974,7 +2974,7 @@ blockquote, .blockquote {
                 border: none!important;
                 box-shadow:0px 8px 16px 0px rgb(146 184 255 / 30%);
                 width: calc(33.3% - 0.5rem)!important;
-                
+
             }
             .eapps-instagram-feed-posts-view{
                 padding:1rem;
@@ -3025,7 +3025,7 @@ blockquote, .blockquote {
     .divider {
         bottom: -1px;
     }
-	
+
     .courses-categories-slides {
         &.owl-theme {
             .owl-nav {
@@ -3170,7 +3170,7 @@ blockquote, .blockquote {
             }
         }
     }
-    
+
     .home-slides {
         &.owl-theme {
             .owl-nav {
@@ -3183,7 +3183,7 @@ blockquote, .blockquote {
             }
         }
     }
-    
+
     .widget-area {
         margin-top: 40px;
     }
@@ -3197,7 +3197,7 @@ blockquote, .blockquote {
 
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-    
+
     .courses-categories-slides {
         &.owl-theme {
             .owl-nav {
@@ -3443,7 +3443,7 @@ blockquote, .blockquote {
         .courses-tag {
             position: relative;
             // right: 25px;
-            
+
             bottom: 0;
             margin:5px;
             margin-top:-32px;
@@ -3558,13 +3558,16 @@ blockquote, .blockquote {
                     size: 18px;
                     weight: 500;
                 };
-                span {
+                .old-price {
                     color: #81868a;
                     text-decoration: line-through;
                     font: {
                         size: 14px;
                         weight: normal;
                     };
+                }
+                .discount{
+                    color: var(--mainColor);
                 }
             }
         }
@@ -3603,11 +3606,11 @@ blockquote, .blockquote {
                     }
                 }
             }
-            &:hover, &:focus {    
+            &:hover, &:focus {
                 .courses-image {
                     .courses-tag {
                         background-color: var(--mainColor);
-        
+
                         a {
                             color: var(--whiteColor);
                         }
@@ -3625,11 +3628,11 @@ blockquote, .blockquote {
                     }
                 }
             }
-            &:hover, &:focus {    
+            &:hover, &:focus {
                 .courses-image {
                     .courses-tag {
                         background-color: #fea116;
-        
+
                         a {
                             color: var(--whiteColor);
                         }
@@ -3647,11 +3650,11 @@ blockquote, .blockquote {
                     }
                 }
             }
-            &:hover, &:focus {    
+            &:hover, &:focus {
                 .courses-image {
                     .courses-tag {
                         background-color: #1cb5a3;
-        
+
                         a {
                             color: var(--whiteColor);
                         }
@@ -3669,11 +3672,11 @@ blockquote, .blockquote {
                     }
                 }
             }
-            &:hover, &:focus {    
+            &:hover, &:focus {
                 .courses-image {
                     .courses-tag {
                         background-color: #3d64ff;
-        
+
                         a {
                             color: var(--whiteColor);
                         }
@@ -3691,11 +3694,11 @@ blockquote, .blockquote {
                     }
                 }
             }
-            &:hover, &:focus {    
+            &:hover, &:focus {
                 .courses-image {
                     .courses-tag {
                         background-color: #e74d57;
-        
+
                         a {
                             color: var(--whiteColor);
                         }
@@ -3739,7 +3742,7 @@ blockquote, .blockquote {
                 border: none!important;
                 box-shadow:0px 8px 16px 0px rgb(146 184 255 / 30%);
                 width: calc(100%)!important;
-                
+
             }
             .eapps-instagram-feed-posts-view{
                 padding:1rem;
@@ -3747,17 +3750,17 @@ blockquote, .blockquote {
                 margin-top:3rem!important;
             }
             .eapps-facebook-feed-videos-item{
-                
+
                 border-radius: 10px!important;
-            
+
             }
             .eapps-facebook-feed-videos{
                 margin-top:4rem!important;
-                
+
             }
             /////////
-            
-            
+
+
     .shorting-menu {
         text-align: center;
         margin: {
@@ -3862,9 +3865,9 @@ body { margin: 0;}
 .mat-form-field-outline-start, .mat-form-field-outline-gap, .mat-form-field-outline-end{
     background-color: var(--background-gral)!important;
     // border-color: white!important;
-    
+
   }
-  
+
   //float level
   .mat-form-field-should-float .mat-form-field-label {
     background-color: var(--background-gral);
@@ -3874,67 +3877,67 @@ body { margin: 0;}
     margin-left: -5px;
     margin-top: -6px;
   }
-  
-  
-  
+
+
+
   // Theme styles that only apply to the outline appearance of the form-field.
-  
+
     .mat-form-field-appearance-outline {
       .mat-form-field-outline {
         color: var(--background-gral)!important; //color de borde
       }
-  
+
       .mat-form-field-outline-thick {
-  
+
         transition: 1s;
         border-radius: 5px;
-  
-  
-  
+
+
+
       }
-  
+
       &.mat-focused {
-  
+
         .mat-form-field-outline-thick {
           color: var(--color-primary-light)!important;
         }
-  
+
         &.mat-accent .mat-form-field-outline-thick {
           color: var(--color-secondary)!important;
         }
-  
+
         &.mat-warn .mat-form-field-outline-thick {
           color: var(--color-warn)!important;
         }
       }
-  
+
       // Class repeated so that rule is specific enough to override focused accent color case.
       &.mat-form-field-invalid.mat-form-field-invalid {
         .mat-form-field-outline-thick {
           color: var(--color-warn)!important;
         }
       }
-  
+
     }
 
-    
+
 
   @media (max-width: 500px){
     body [class^='mvd-col']{
       grid-column: 1 / -1!important;
     }
   }
-  
+
   @media (max-width: 800px){
     body [class^='mvd-col']{
       grid-column: 1 / -1!important;
     }
   }
-  
+
   @media (max-width: 1024px){
    body [class*='mvd-col'] {
         grid-column: 1 / -1!important;
     }
-   
+
   }
 
