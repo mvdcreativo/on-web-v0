@@ -2,7 +2,7 @@
     <div class="single-courses-list-box mb-30">
         <div class="box-item">
             <div class="courses-image">
-                <div class="image bg-1" [ngStyle]="{'background-image': 'url('+course.images[0].url_medium+')'}">
+                <div class="image bg-1" [ngStyle]="{'background-image': 'url('+course?.images[0]?.url_medium+')'}">
                     <!-- <swiper [config]="config" class="swiper-container">
                         <img *ngFor="let image of course.images" [src]="image.url" >
                     </swiper> -->
