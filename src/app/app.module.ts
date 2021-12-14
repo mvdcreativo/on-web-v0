@@ -31,29 +31,21 @@ import { AboutPageOneComponent } from './components/pages/about-page-one/about-p
 import { AboutPageTwoComponent } from './components/pages/about-page-two/about-page-two.component';
 import { OurStoryComponent } from './components/common/our-story/our-story.component';
 import { OurValuesComponent } from './components/common/our-values/our-values.component';
-import { InstructorsPageOneComponent } from './components/pages/instructors-page-one/instructors-page-one.component';
-import { InstructorsPageTwoComponent } from './components/pages/instructors-page-two/instructors-page-two.component';
-import { InstructorsPageThreeComponent } from './components/pages/instructors-page-three/instructors-page-three.component';
-import { InstructorsDetailsPageComponent } from './components/pages/instructors-details-page/instructors-details-page.component';
+
 import { EventsPageComponent } from './components/pages/events-page/events-page.component';
 import { EventsDetailsPageComponent } from './components/pages/events-details-page/events-details-page.component';
-import { PricingPageComponent } from './components/pages/pricing-page/pricing-page.component';
 import { FeedbackPageComponent } from './components/pages/feedback-page/feedback-page.component';
-import { PartnerPageComponent } from './components/pages/partner-page/partner-page.component';
 import { FaqPageComponent } from './components/pages/faq-page/faq-page.component';
 import { ErrorPageComponent } from './components/pages/error-page/error-page.component';
 import { ComingSoonPageComponent } from './components/pages/coming-soon-page/coming-soon-page.component';
 
-import { ShopGridPageComponent } from './components/pages/shop-grid-page/shop-grid-page.component';
-import { ShopFullWidthPageComponent } from './components/pages/shop-full-width-page/shop-full-width-page.component';
-import { ProductsDetailsPageComponent } from './components/pages/products-details-page/products-details-page.component';
 import { ContactPageComponent } from './components/pages/contact-page/contact-page.component';
 import { CoursesGridStyleOneColumnsFourPageComponent } from './components/pages/courses-grid-style-one-columns-four-page/courses-grid-style-one-columns-four-page.component';
 import { CoursesGridStyleTwoColumnsTwoPageComponent } from './components/pages/courses-grid-style-two-columns-two-page/courses-grid-style-two-columns-two-page.component';
 import { CoursesGridStyleTwoColumnsThreePageComponent } from './components/pages/courses-grid-style-two-columns-three-page/courses-grid-style-two-columns-three-page.component';
 import { CoursesGridStyleThreeColumnsTwoPageComponent } from './components/pages/courses-grid-style-three-columns-two-page/courses-grid-style-three-columns-two-page.component';
 import { CoursesGridStyleThreeColumnsThreePageComponent } from './components/pages/courses-grid-style-three-columns-three-page/courses-grid-style-three-columns-three-page.component';
-import { DownloadsPageComponent } from './components/pages/downloads-page/downloads-page.component';
+// import { DownloadsPageComponent } from './components/pages/downloads-page/downloads-page.component';
 import { SharedModule } from './shared/shared.module';
 import { indexAuthInterceptor } from './auth/helpers/index-auth.interceptor';
 
@@ -99,28 +91,20 @@ import { NumberFormatPipe } from './shared/pipes/number-format.pipe';
     AboutPageTwoComponent,
     OurStoryComponent,
     OurValuesComponent,
-    InstructorsPageOneComponent,
-    InstructorsPageTwoComponent,
-    InstructorsPageThreeComponent,
-    InstructorsDetailsPageComponent,
+
     EventsPageComponent,
     EventsDetailsPageComponent,
-    PricingPageComponent,
     FeedbackPageComponent,
-    PartnerPageComponent,
     FaqPageComponent,
     ErrorPageComponent,
     ComingSoonPageComponent,
-    ShopGridPageComponent,
-    ShopFullWidthPageComponent,
-    ProductsDetailsPageComponent,
     ContactPageComponent,
     CoursesGridStyleOneColumnsFourPageComponent,
     CoursesGridStyleTwoColumnsTwoPageComponent,
     CoursesGridStyleTwoColumnsThreePageComponent,
     CoursesGridStyleThreeColumnsTwoPageComponent,
     CoursesGridStyleThreeColumnsThreePageComponent,
-    DownloadsPageComponent,
+    // DownloadsPageComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
